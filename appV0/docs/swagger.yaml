@@ -1,0 +1,381 @@
+basePath: /
+definitions:
+  logic.Token:
+    properties:
+      access_token:
+        type: string
+      refresh_token:
+        type: string
+    type: object
+  model.Book:
+    properties:
+      bn:
+        type: string
+      categoryId:
+        type: integer
+      count:
+        type: integer
+      description:
+        type: string
+      id:
+        type: integer
+      img_url:
+        type: string
+      name:
+        type: string
+    type: object
+  model.Record:
+    properties:
+      bookId:
+        type: integer
+      id:
+        type: integer
+      overTime:
+        type: string
+      returnTime:
+        type: string
+      startTime:
+        type: string
+      status:
+        type: integer
+      userId:
+        type: integer
+    type: object
+  tools.HttpCode:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: 纯属瞎搞，及其辣眼
+  title: 简易图书项目API
+  version: "0.0"
+paths:
+  /:
+    get:
+      consumes:
+      - application/json
+      description: 从数据库获取前100书的信息
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+      summary: 获取前100书的信息
+      tags:
+      - tourist
+  /admin/records/{status}/{id}:
+    get:
+      consumes:
+      - multipart/form-data
+      description: 根据用户ID获取相关借书记录
+      parameters:
+      - description: 用户ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+      summary: 查看借书记录
+      tags:
+      - admin
+  /admin/records/getRecords:
+    get:
+      consumes:
+      - application/json
+      description: 获取借书记录列表列表
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/model.Record'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/model.Record'
+                  type: array
+              type: object
+      summary: 获取借书记录列表
+      tags:
+      - admin
+  /adminLogin:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 会执行管理员登录操作
+      parameters:
+      - description: 用户名
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: 密码
+        in: formData
+        name: pwd
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 管理园登录
+      tags:
+      - admin
+  /adminLogout:
+    get:
+      consumes:
+      - multipart/form-data
+      description: 会执行管理员退出操作
+      produces:
+      - application/json
+      responses:
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+      summary: 管理员退出
+      tags:
+      - admin
+  /books/{id}:
+    get:
+      consumes:
+      - multipart/form-data
+      description: 根据ID获得图书
+      parameters:
+      - description: int valid
+        in: path
+        minimum: 1
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Book'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Book'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Book'
+              type: object
+      summary: 根据id获得图书
+      tags:
+      - tourist
+  /user/users/records/{bookId}:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 会执行根据bookId借书操作
+      parameters:
+      - collectionFormat: csv
+        description: 图书ID
+        in: formData
+        items:
+          type: integer
+        name: book[]
+        type: array
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 用户借书
+      tags:
+      - user
+    put:
+      consumes:
+      - multipart/form-data
+      description: 会执行根据bookId还书操作
+      parameters:
+      - collectionFormat: csv
+        description: 图书ID
+        in: formData
+        items:
+          type: integer
+        name: book[]
+        type: array
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 还书
+      tags:
+      - user
+  /userLogin:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 会执行用户登录操作
+      parameters:
+      - description: 用户名
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: 密码
+        in: formData
+        name: pwd
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 用户登录
+      tags:
+      - user
+  /userLogout:
+    get:
+      consumes:
+      - multipart/form-data
+      description: 会执行用户退出操作
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+      summary: 用户退出
+      tags:
+      - user
+swagger: "2.0"

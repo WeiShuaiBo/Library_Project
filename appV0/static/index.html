@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Post Request Form</title>
+</head>
+<body>
+<h2>Post Request Form</h2>
+<form method="post" action="http://localhost:8080/adminLogin">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    <label for="pwd">pwd:</label>
+    <input type="" id="pwd" name="pwd" required><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+
+<form method="GET" action="/admin/records/getRecords">
+
+
+    <input type="submit" value="Submit">
+</form>
+<div style="height: 30px;background:red;">邪恶的分割线</div>
+<form method="post" action="http://localhost:8080/userLogin">
+    <label for="name">Name:</label>
+    <input type="text" id="name_user" name="name" required><br><br>
+    <label for="pwd">pwd:</label>
+    <input type="" id="pwd-user" name="pwd" required><br><br>
+
+    <input type="submit" value="Submit">
+</form>
+<form method="GET" action="/user/users/records/">
+    <label for="name">Name:</label>
+    <input type="text" id="bookId-borrow" name="bookId" required><br><br>
+借书
+    <input type="submit" value="Submit">
+</form><form method="PUT" action="/user/users/records/">
+    <label for="name">Name:</label>
+    <input type="text" id="bookId-record" name="bookId" required><br><br>
+还书
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
