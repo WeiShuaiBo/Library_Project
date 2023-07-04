@@ -1,0 +1,177 @@
+basePath: /
+definitions:
+  dao.Book:
+    properties:
+      author:
+        description: 作者
+        type: string
+      book_name:
+        description: 书名
+        type: string
+      count:
+        description: 图书数量
+        type: integer
+      createTime:
+        description: 图书添加时间
+        type: string
+      description:
+        description: 描述
+        type: string
+      id:
+        description: 图书ID
+        type: integer
+    type: object
+  tools.HttpCode:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+    type: object
+host: 127.0.0.1
+info:
+  contact: {}
+  description: 该项目用户设有游客，普通用户和管理员，但是只有普通用户和管理员可以借阅书籍
+  title: 图书馆管理系统
+  version: "1.0"
+paths:
+  /:
+    get:
+      description: 获取所有图书信息
+      responses: {}
+      summary: 获取所有图书信息
+      tags:
+      - library
+  /{book_name}:
+    get:
+      consumes:
+      - application/json
+      description: 通过模糊查询查看图书信息学
+      parameters:
+      - description: 书名
+        in: path
+        name: book_name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/dao.Book'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/dao.Book'
+              type: object
+      summary: 获取图书信息
+      tags:
+      - library
+  /login:
+    post:
+      description: 用户登录
+      responses: {}
+      summary: 用户登录
+      tags:
+      - login
+  /logout:
+    get:
+      description: 用户退出登录
+      responses: {}
+      summary: 用户退出登录
+      tags:
+      - login
+  /manager:
+    get:
+      description: 查看所有借阅记录
+      responses: {}
+      summary: 查看所有借阅记录
+      tags:
+      - manager
+  /manager/{book_name}:
+    get:
+      description: 查看指定图书的借阅记录
+      responses: {}
+      summary: 查看指定图书的借阅记录
+      tags:
+      - manager
+  /manager/book:
+    post:
+      description: 管理员添加图书信息
+      responses: {}
+      summary: 添加图书
+      tags:
+      - manager
+  /manager/book/{book_name}:
+    delete:
+      description: 管理员删除指定书名的图书信息
+      responses: {}
+      summary: 删除图书信息
+      tags:
+      - manager
+  /manager/user:
+    get:
+      description: 查看所有用户信息
+      responses: {}
+      summary: 查看所有用户信息
+      tags:
+      - manager
+  /manager/user/{id}:
+    get:
+      description: 查看指定用户的借阅信息
+      responses: {}
+      summary: 查看指定用户的借阅信息
+      tags:
+      - manager
+  /register:
+    post:
+      description: 用户注册
+      responses: {}
+      summary: 用户注册
+      tags:
+      - login
+  /user:
+    get:
+      description: 查看用户信息
+      responses: {}
+      summary: 查看用户信息
+      tags:
+      - user
+    put:
+      description: 修改用户信息
+      responses: {}
+      summary: 修改用户信息
+      tags:
+      - user
+  /user/book:
+    get:
+      description: 查看自己的借阅记录
+      responses: {}
+      summary: 查看自己的借阅记录
+      tags:
+      - user
+  /user/book/{book_name}:
+    get:
+      description: 归还指定书名的图书
+      responses: {}
+      summary: 归还图书
+      tags:
+      - user
+    post:
+      description: 借阅指定书名的图书
+      responses: {}
+      summary: 借阅图书
+      tags:
+      - user
+swagger: "2.0"
