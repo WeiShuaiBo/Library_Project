@@ -1,0 +1,715 @@
+definitions:
+  logic.Token:
+    properties:
+      access_token:
+        type: string
+      refresh_token:
+        type: string
+    type: object
+  model.APIBook:
+    properties:
+      author:
+        type: string
+      lendOut:
+        type: boolean
+      name:
+        type: string
+      number:
+        type: integer
+    type: object
+  model.APILendBooks:
+    properties:
+      bookName:
+        type: string
+      giveBook:
+        type: boolean
+      giveTime:
+        type: string
+      lendTime:
+        type: string
+      userName:
+        type: string
+    type: object
+  model.APIUser:
+    properties:
+      name:
+        type: string
+      pwd:
+        type: string
+      tel:
+        type: string
+    required:
+    - name
+    - pwd
+    - tel
+    type: object
+  model.Book:
+    properties:
+      author:
+        description: 图书作者
+        type: string
+      id:
+        type: integer
+      lend_out:
+        description: 图书是否借出
+        type: boolean
+      name:
+        description: 图书名字
+        type: string
+      number:
+        description: 图书编号
+        type: string
+      user_id:
+        description: 借出用户
+        type: integer
+    required:
+    - author
+    - name
+    - number
+    type: object
+  model.LendBooks:
+    properties:
+      bookId:
+        description: 图书Id
+        type: integer
+      bookName:
+        description: 图书名
+        type: string
+      giveBook:
+        description: 是否归还
+        type: boolean
+      giveTime:
+        description: 归还时间
+        type: string
+      id:
+        type: integer
+      lendTime:
+        description: 借出时间
+        type: string
+      userId:
+        description: 用户Id
+        type: integer
+      userName:
+        description: 用户名
+        type: string
+    type: object
+  tools.HttpCode:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: 图书管理系统，现在是0.0版本
+  title: 图书管理系统
+  version: "0.0"
+paths:
+  /admin/book:
+    post:
+      consumes:
+      - application/json
+      description: 管理员新增图书
+      parameters:
+      - description: 图书名字
+        in: body
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: 图书作者
+        in: body
+        name: author
+        required: true
+        schema:
+          type: string
+      - description: 图书编号
+        in: body
+        name: number
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+      summary: 新建图书
+      tags:
+      - Admin
+  /admin/book/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: 管理员删除书籍
+      parameters:
+      - description: 删除id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+      summary: 删除书籍
+      tags:
+      - Admin
+    get:
+      consumes:
+      - application/json
+      description: 管理员根据Id查询书籍的详细信息
+      parameters:
+      - description: 搜索id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Book'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Book'
+              type: object
+      summary: 管理员根据Id查询书籍
+      tags:
+      - Admin
+    put:
+      consumes:
+      - application/json
+      description: 管理员修改图书
+      parameters:
+      - description: 更新图书id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: 图书名字
+        in: body
+        name: name
+        required: true
+        schema:
+          type: string
+      - description: 图书作者
+        in: body
+        name: author
+        required: true
+        schema:
+          type: string
+      - description: 图书编号
+        in: body
+        name: number
+        required: true
+        schema:
+          type: string
+      - description: 图书作者
+        in: body
+        name: lend_out
+        schema:
+          type: string
+      - description: 图书编号
+        in: body
+        name: user_id
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+      summary: 修改图书
+      tags:
+      - Admin
+  /admin/books:
+    get:
+      consumes:
+      - application/json
+      description: 管理员模糊查询书籍的详细信息
+      parameters:
+      - description: 关键词
+        in: query
+        name: keyWord
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/model.Book'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/model.Book'
+                  type: array
+              type: object
+      summary: 模糊查询书籍
+      tags:
+      - Admin
+  /admin/getInfo:
+    get:
+      consumes:
+      - application/json
+      description: 会执行获得所有书籍的借阅记录
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/model.LendBooks'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/model.LendBooks'
+                  type: array
+              type: object
+      summary: 借阅记录
+      tags:
+      - Admin
+  /adminLogin:
+    post:
+      consumes:
+      - application/json
+      description: 会执行管理员登录操作
+      parameters:
+      - description: 用户名
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: 密码
+        in: query
+        name: pwd
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 管理员登录
+      tags:
+      - Comm
+  /bookByKeyWord:
+    post:
+      consumes:
+      - application/json
+      description: 根据关键词模糊查询所有图书
+      parameters:
+      - description: 关键词
+        in: query
+        name: keyWord
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/model.APIBook'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/model.APIBook'
+                  type: array
+              type: object
+      summary: 模糊查询图书
+      tags:
+      - Comm
+  /books:
+    get:
+      consumes:
+      - application/json
+      description: 获取所有图书列表
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/model.APIBook'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/model.APIBook'
+                  type: array
+              type: object
+      summary: 获取图书列表
+      tags:
+      - Comm
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: 会执行用户登录操作
+      parameters:
+      - description: 用户名
+        example: zhanggsan
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: 密码
+        example: "123"
+        in: query
+        name: pwd
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 用户登录
+      tags:
+      - Comm
+  /register:
+    post:
+      consumes:
+      - application/json
+      description: 会执行用户注册操作
+      parameters:
+      - description: 用户名
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: 密码
+        in: query
+        name: pwd
+        required: true
+        type: string
+      - description: 手机号
+        in: query
+        name: tel
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 用户注册
+      tags:
+      - Comm
+  /user/getAllLendInfo:
+    get:
+      consumes:
+      - application/json
+      description: 会执行获得个人的借阅记录
+      parameters:
+      - description: 输入token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.APILendBooks'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.APILendBooks'
+              type: object
+      summary: 个人借阅记录
+      tags:
+      - User
+  /user/getInfo:
+    get:
+      consumes:
+      - application/json
+      description: 会执行用户查询个人信息功能
+      parameters:
+      - description: 输入token
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.APIUser'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.APIUser'
+              type: object
+      summary: 查询个人信息
+      tags:
+      - User
+  /user/giveBook/{id}:
+    put:
+      consumes:
+      - application/json
+      description: 用户还书籍
+      parameters:
+      - description: 输入token
+        in: header
+        name: Authorization
+        type: string
+      - description: id
+        in: path
+        name: id
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+      summary: 还书
+      tags:
+      - User
+  /user/lendBook/{id}:
+    put:
+      consumes:
+      - application/json
+      description: 用户借书籍
+      parameters:
+      - description: 输入token
+        in: header
+        name: Authorization
+        type: string
+      - description: id
+        in: path
+        name: id
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+      summary: 借书
+      tags:
+      - User
+  /user/updateInfo:
+    put:
+      consumes:
+      - application/json
+      description: 会执行用户修改个人信息功能
+      parameters:
+      - description: 输入token
+        in: header
+        name: Authorization
+        type: string
+      - description: 用户名
+        in: body
+        name: name
+        schema:
+          type: string
+      - description: 密码
+        in: body
+        name: pwd
+        schema:
+          type: string
+      - description: 手机号
+        in: body
+        name: tel
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.APIUser'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.APIUser'
+              type: object
+      summary: 修改个人信息
+      tags:
+      - User
+swagger: "2.0"

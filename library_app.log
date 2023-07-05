@@ -1,0 +1,6 @@
+{"level":"info","msg":"Logrous configured successfully!","time":"2023-07-04T10:08:44+08:00"}
+{"level":"info","msg":"数据库连接成功","time":"2023-07-04T10:08:44+08:00"}
+{"level":"info","msg":"Logrous configured successfully!","time":"2023-07-04T10:09:40+08:00"}
+{"level":"error","msg":"数据库连接失败err:%sError 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)","time":"2023-07-04T10:09:40+08:00"}
+{"level":"info","msg":"Logrous configured successfully!","time":"2023-07-04T10:10:43+08:00"}
+{"level":"info","msg":"数据库连接成功","time":"2023-07-04T10:10:43+08:00"}
