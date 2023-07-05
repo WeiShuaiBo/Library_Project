@@ -1,0 +1,22 @@
+{
+  "mode": "debug",
+  "port": 8080,
+  "log": {
+    "level": "debug",
+    "filename": "app.log",
+    "maxsize": 200,
+    "max_age": 7,
+    "max_backups": 10
+  },
+  "mysql": {
+    "username":"root",
+    "password":"020409",
+    "ip":"127.0.0.1:3306",
+    "name":"library"
+  },
+  "redis": {
+    "ip": "192.168.89.129:6379",
+    "maxIdle":     3,
+    "maxActive":   5
+  }
+}
