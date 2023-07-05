@@ -1,0 +1,268 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "有关图书系统相关的接口文档",
+        "title": "图书管理接口文档",
+        "contact": {},
+        "license": {
+            "name": "Apache 2.0"
+        },
+        "version": "v1"
+    },
+    "host": "127.0.0.1:8083",
+    "basePath": "/",
+    "paths": {
+        "/api/v1/book": {
+            "post": {
+                "description": "创建图书模块",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理员"
+                ],
+                "summary": "创建图书",
+                "responses": {}
+            }
+        },
+        "/api/v1/book/:id": {
+            "delete": {
+                "description": "删除图书模块",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理员"
+                ],
+                "summary": "删除图书",
+                "responses": {}
+            }
+        },
+        "/api/v1/borrow/:id": {
+            "post": {
+                "description": "用户借书",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "普通用户"
+                ],
+                "summary": "借书模块",
+                "responses": {}
+            }
+        },
+        "/api/v1/borrowHistory": {
+            "get": {
+                "description": "借阅图书历史模块",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理员"
+                ],
+                "summary": "借阅图书历史",
+                "responses": {}
+            }
+        },
+        "/api/v1/borrowHistory/:id": {
+            "get": {
+                "description": "借阅图书部分信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理员"
+                ],
+                "summary": "借阅图书部分信息",
+                "responses": {}
+            }
+        },
+        "/api/v1/public/BGetBook": {
+            "post": {
+                "description": "模糊查询图书信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "公开"
+                ],
+                "summary": "模糊查询图书",
+                "responses": {}
+            }
+        },
+        "/api/v1/public/BGetBooks": {
+            "post": {
+                "description": "获取所有图书信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "公开"
+                ],
+                "summary": "获取图书列表",
+                "responses": {}
+            }
+        },
+        "/api/v1/public/login": {
+            "post": {
+                "description": "登录",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "公开"
+                ],
+                "summary": "登录接口",
+                "responses": {}
+            }
+        },
+        "/api/v1/public/logout": {
+            "post": {
+                "description": "退出登录",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "公开"
+                ],
+                "summary": "退出登录接口",
+                "responses": {}
+            }
+        },
+        "/api/v1/public/register": {
+            "post": {
+                "description": "注册",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "公开"
+                ],
+                "summary": "注册接口",
+                "responses": {}
+            }
+        },
+        "/api/v1/return/:id": {
+            "post": {
+                "description": "用户还书",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "普通用户"
+                ],
+                "summary": "还书模块",
+                "responses": {}
+            }
+        },
+        "/api/v1/selfBorrowHistory": {
+            "get": {
+                "description": "查看个人借阅历史",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "普通用户"
+                ],
+                "summary": "查看借阅历史",
+                "responses": {}
+            }
+        },
+        "/api/v1/selfInformation": {
+            "get": {
+                "description": "用于获取单个用户信息",
+                "tags": [
+                    "普通用户"
+                ],
+                "summary": "测试用户获取",
+                "responses": {}
+            }
+        },
+        "/api/v1/updateInformation": {
+            "put": {
+                "description": "用于更新用户信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "普通用户"
+                ],
+                "summary": "测试用户更新",
+                "responses": {}
+            }
+        },
+        "/api/v1/users": {
+            "get": {
+                "description": "用于获取所有用户信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "管理员"
+                ],
+                "summary": "测试所以用户获取",
+                "responses": {}
+            },
+            "post": {
+                "description": "用于生成用户",
+                "tags": [
+                    "管理员"
+                ],
+                "summary": "测试创建用户",
+                "responses": {}
+            }
+        },
+        "/api/v1/users/:id": {
+            "delete": {
+                "description": "用于删除用户信息",
+                "tags": [
+                    "管理员"
+                ],
+                "summary": "测试用户删除",
+                "responses": {}
+            }
+        }
+    }
+}

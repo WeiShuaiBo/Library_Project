@@ -1,0 +1,185 @@
+basePath: /
+host: 127.0.0.1:8083
+info:
+  contact: {}
+  description: 有关图书系统相关的接口文档
+  license:
+    name: Apache 2.0
+  title: 图书管理接口文档
+  version: v1
+paths:
+  /api/v1/book:
+    post:
+      consumes:
+      - application/json
+      description: 创建图书模块
+      produces:
+      - application/json
+      responses: {}
+      summary: 创建图书
+      tags:
+      - 管理员
+  /api/v1/book/:id:
+    delete:
+      consumes:
+      - application/json
+      description: 删除图书模块
+      produces:
+      - application/json
+      responses: {}
+      summary: 删除图书
+      tags:
+      - 管理员
+  /api/v1/borrow/:id:
+    post:
+      consumes:
+      - application/json
+      description: 用户借书
+      produces:
+      - application/json
+      responses: {}
+      summary: 借书模块
+      tags:
+      - 普通用户
+  /api/v1/borrowHistory:
+    get:
+      consumes:
+      - application/json
+      description: 借阅图书历史模块
+      produces:
+      - application/json
+      responses: {}
+      summary: 借阅图书历史
+      tags:
+      - 管理员
+  /api/v1/borrowHistory/:id:
+    get:
+      consumes:
+      - application/json
+      description: 借阅图书部分信息
+      produces:
+      - application/json
+      responses: {}
+      summary: 借阅图书部分信息
+      tags:
+      - 管理员
+  /api/v1/public/BGetBook:
+    post:
+      consumes:
+      - application/json
+      description: 模糊查询图书信息
+      produces:
+      - application/json
+      responses: {}
+      summary: 模糊查询图书
+      tags:
+      - 公开
+  /api/v1/public/BGetBooks:
+    post:
+      consumes:
+      - application/json
+      description: 获取所有图书信息
+      produces:
+      - application/json
+      responses: {}
+      summary: 获取图书列表
+      tags:
+      - 公开
+  /api/v1/public/login:
+    post:
+      consumes:
+      - application/json
+      description: 登录
+      produces:
+      - application/json
+      responses: {}
+      summary: 登录接口
+      tags:
+      - 公开
+  /api/v1/public/logout:
+    post:
+      consumes:
+      - application/json
+      description: 退出登录
+      produces:
+      - application/json
+      responses: {}
+      summary: 退出登录接口
+      tags:
+      - 公开
+  /api/v1/public/register:
+    post:
+      consumes:
+      - application/json
+      description: 注册
+      produces:
+      - application/json
+      responses: {}
+      summary: 注册接口
+      tags:
+      - 公开
+  /api/v1/return/:id:
+    post:
+      consumes:
+      - application/json
+      description: 用户还书
+      produces:
+      - application/json
+      responses: {}
+      summary: 还书模块
+      tags:
+      - 普通用户
+  /api/v1/selfBorrowHistory:
+    get:
+      consumes:
+      - application/json
+      description: 查看个人借阅历史
+      produces:
+      - application/json
+      responses: {}
+      summary: 查看借阅历史
+      tags:
+      - 普通用户
+  /api/v1/selfInformation:
+    get:
+      description: 用于获取单个用户信息
+      responses: {}
+      summary: 测试用户获取
+      tags:
+      - 普通用户
+  /api/v1/updateInformation:
+    put:
+      consumes:
+      - application/json
+      description: 用于更新用户信息
+      produces:
+      - application/json
+      responses: {}
+      summary: 测试用户更新
+      tags:
+      - 普通用户
+  /api/v1/users:
+    get:
+      consumes:
+      - application/json
+      description: 用于获取所有用户信息
+      produces:
+      - application/json
+      responses: {}
+      summary: 测试所以用户获取
+      tags:
+      - 管理员
+    post:
+      description: 用于生成用户
+      responses: {}
+      summary: 测试创建用户
+      tags:
+      - 管理员
+  /api/v1/users/:id:
+    delete:
+      description: 用于删除用户信息
+      responses: {}
+      summary: 测试用户删除
+      tags:
+      - 管理员
+swagger: "2.0"
