@@ -1,0 +1,23 @@
+system:
+  domain: Book
+  version: 1.0
+  env: "dev"
+  HttpPort: :8080
+  Host: "localhost"
+
+mysql:
+  default:
+    dialect: "mysql"
+    dbHost: "127.0.0.1"
+    dbPort: "3306"
+    dbName: "test"
+    userName: "root"
+    password: "1234"
+    charset: "utf8mb4"
+
+redis:
+  redisDbName: 0
+  redisHost: 127.0.0.1
+  redisPort: 6379
+  redisPassword:
+  redisNetwork: "tcp"

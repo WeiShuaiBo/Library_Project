@@ -1,0 +1,107 @@
+
+
+
+##################################################################################################  管理员
+
+### 添加书籍
+POST http://localhost:8080/api/v1/book/createBook
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0NDA1MzM4NzI4MDM4NDEsImV4cCI6MTcyMDAxMTQzMiwiaXNzIjoiYmx1ZWJlbGwifQ.PAXU_lleKG_LJvI_vqtMkn4kgMq4dV9-JYceWvPJvgI
+
+{"book_name": "平凡的世界","author": "路遥","price": "100","type": "文学","remaining": "100","desc": "《平凡的世界》是路遥老师创作的一部百万字长篇巨著,在70~80年代的背景上,劳动与爱情、挫折与追求、痛苦与欢乐、日常生活与巨大社会冲突纷繁地交织在一起，被誉为“茅盾文学奖皇冠上的明珠"}
+
+### 删除书籍
+POST http://localhost:8080/api/v1/book/deleteBookByName
+Content-Type: application/json
+
+{"book_name": "三体"}
+
+### 查看所有的用户
+GET http://localhost:8080/api/v1/user/getAllUser
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0NDA1MzM4NzI4MDM4NDEsImV4cCI6MTcyMDAxMTQzMiwiaXNzIjoiYmx1ZWJlbGwifQ.PAXU_lleKG_LJvI_vqtMkn4kgMq4dV9-JYceWvPJvgI
+
+### 删除用户
+POST http://localhost:8080/api/v1/user/deleteUser
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0NDA1MzM4NzI4MDM4NDEsImV4cCI6MTcyMDAxMTQzMiwiaXNzIjoiYmx1ZWJlbGwifQ.PAXU_lleKG_LJvI_vqtMkn4kgMq4dV9-JYceWvPJvgI
+
+{"user_id": "512755308167169"}
+
+
+
+
+
+########################################################################################## 普通用户
+
+
+### 借书
+POST http://localhost:8080/api/v1/book/borrowBook
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0NDA1MzM4NzI4MDM4NDEsImV4cCI6MTcyMDAxMTQzMiwiaXNzIjoiYmx1ZWJlbGwifQ.PAXU_lleKG_LJvI_vqtMkn4kgMq4dV9-JYceWvPJvgI
+
+{"book_name": "三体"}
+
+### 查询个人信息
+GET http://localhost:8080/api/v1/user/findUserInfo
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0NDA1MzM4NzI4MDM4NDEsImV4cCI6MTcyMDAxMTQzMiwiaXNzIjoiYmx1ZWJlbGwifQ.PAXU_lleKG_LJvI_vqtMkn4kgMq4dV9-JYceWvPJvgI
+
+### 修改个人信息
+POST http://localhost:8080/api/v1/book/borrowBook
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0NDA1MzM4NzI4MDM4NDEsImV4cCI6MTcyMDAxMTQzMiwiaXNzIjoiYmx1ZWJlbGwifQ.PAXU_lleKG_LJvI_vqtMkn4kgMq4dV9-JYceWvPJvgI
+
+{}
+
+### 查询自己的借阅记录
+GET http://localhost:8080/api/v1/user/findUserRecord
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo0NDA1MzM4NzI4MDM4NDEsImV4cCI6MTcyMDAxMTQzMiwiaXNzIjoiYmx1ZWJlbGwifQ.PAXU_lleKG_LJvI_vqtMkn4kgMq4dV9-JYceWvPJvgI
+
+
+
+############################################################################################## 公共
+
+GET http://localhost:8080/api/v1/book/getBook
+Accept: application/json
+
+### 1 查询所有书籍
+
+
+
+
+
+POST http://localhost:8080/api/v1/book/findBookByName
+Content-Type: application/json
+
+{
+  "book_name": "三体"
+}
+
+###2 书名查询书籍
+
+
+POST http://localhost:8080/api/v1/user/login
+Content-Type: application/json
+
+{"username": "name","password": "13","email": "2568317193@qq.com","code": "493135"}
+
+### 3 登陆
+
+
+POST http://localhost:8080/api/v1/user/register
+Content-Type: application/json
+
+{"username": "user1","password": "123456","email": "2568317193@qq.com","code": "123"}
+
+
+### 4 注册
+
+POST http://localhost:8080/api/v1/user/sendEmail
+Content-Type: application/json
+
+{"mail": "2568317193@qq.com"}
+
+
+### 5 发送邮箱
