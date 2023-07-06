@@ -1,12 +1,12 @@
 package logic
 
 import (
-	"Library/appV0/model"
-	"Library/appV0/tools"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/gomodule/redigo/redis"
 	"go.uber.org/zap"
+	"library/appV0/model"
+	"library/appV0/tools"
 	"math/rand"
 	"time"
 

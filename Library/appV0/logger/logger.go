@@ -1,7 +1,7 @@
 package logger
 
 import (
-	"Library/appV0/config"
+	"library/appV0/config"
 	"net"
 	"net/http"
 	"net/http/httputil"

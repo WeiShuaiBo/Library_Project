@@ -1,0 +1,758 @@
+definitions:
+  logic.Token:
+    properties:
+      access_token:
+        type: string
+      refresh_token:
+        type: string
+    type: object
+  model.Library:
+    properties:
+      author:
+        type: string
+      edition:
+        type: string
+      id:
+        type: integer
+      publisher:
+        type: string
+      stock:
+        type: integer
+      title:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  tools.HttpCode:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /guest/findLibrary:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 根据title查找图书
+      parameters:
+      - description: 书名
+        in: query
+        name: title
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Library'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Library'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Library'
+              type: object
+      summary: 查找图书
+      tags:
+      - guest
+  /guest/getLibrary:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 会执行查询全部图书操作
+      parameters:
+      - description: 页码
+        in: formData
+        name: page
+        required: true
+        type: integer
+      - description: 页码大小
+        in: formData
+        name: pageSize
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 查询所有图书
+      tags:
+      - guest
+  /guest/getValidateCode:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 用于注册
+      parameters:
+      - description: 联系方式
+        in: query
+        name: tel
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 获取手机验证码
+      tags:
+      - guest
+  /guest/login:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 会执行用户登录操作
+      parameters:
+      - description: 用户名
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: 密码
+        in: formData
+        name: pwd
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 登录
+      tags:
+      - guest
+  /guest/register:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 会执行用户注册操作
+      parameters:
+      - description: 用户名
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: 密码
+        in: formData
+        name: pwd
+        required: true
+        type: string
+      - description: 联系方式
+        in: formData
+        name: tel
+        required: true
+        type: string
+      - description: 验证码
+        in: formData
+        name: captcha
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 注册
+      tags:
+      - guest
+  /user/admin/creatLibrary:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 会执行添加图书操作
+      parameters:
+      - description: 书名
+        in: formData
+        name: title
+        required: true
+        type: string
+      - description: 作者
+        in: formData
+        name: author
+        required: true
+        type: string
+      - description: 出版社
+        in: formData
+        name: publisher
+        required: true
+        type: string
+      - description: 版号
+        in: formData
+        name: edition
+        required: true
+        type: string
+      - description: 库存
+        in: formData
+        name: stock
+        required: true
+        type: integer
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 添加图书
+      tags:
+      - user/admin
+  /user/admin/deleteLibrary:
+    delete:
+      consumes:
+      - multipart/form-data
+      description: 根据ID删除图书
+      parameters:
+      - description: id
+        in: query
+        name: library_id
+        required: true
+        type: string
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 删除图书
+      tags:
+      - user/admin
+  /user/admin/getARecordByUserId:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 根据用户id查找借书记录
+      parameters:
+      - description: 用户Id
+        in: query
+        name: user_id
+        required: true
+        type: integer
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Library'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Library'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Library'
+              type: object
+      summary: 借书记录(单个用户)
+      tags:
+      - user/admin
+  /user/admin/getExpected:
+    get:
+      consumes:
+      - multipart/form-data
+      description: 查找全部预期
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Library'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Library'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Library'
+              type: object
+      summary: 预期用户（全部）
+      tags:
+      - user/admin
+  /user/admin/getRecord:
+    get:
+      consumes:
+      - multipart/form-data
+      description: 查找全部借书记录
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Library'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Library'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Library'
+              type: object
+      summary: 借书记录（全部）
+      tags:
+      - user/admin
+  /user/admin/updateLibrary:
+    put:
+      consumes:
+      - multipart/form-data
+      description: 会执行修改图书操作
+      parameters:
+      - description: id
+        in: formData
+        name: id
+        required: true
+        type: integer
+      - description: 书名
+        in: formData
+        name: title
+        required: true
+        type: string
+      - description: 作者
+        in: formData
+        name: author
+        required: true
+        type: string
+      - description: 出版社
+        in: formData
+        name: publisher
+        required: true
+        type: string
+      - description: 版号
+        in: formData
+        name: edition
+        required: true
+        type: string
+      - description: 库存
+        in: formData
+        name: stock
+        required: true
+        type: integer
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 修改图书
+      tags:
+      - user/admin
+  /user/common/dueLibrary:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 根据ID归还图书
+      parameters:
+      - description: 还书Id
+        in: query
+        name: id
+        required: true
+        type: string
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 归还图书
+      tags:
+      - user/common
+  /user/common/getRecordByUserId:
+    get:
+      consumes:
+      - multipart/form-data
+      description: 根据用户id查找借书记录
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Library'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Library'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/model.Library'
+              type: object
+      summary: 借书记录
+      tags:
+      - user/common
+  /user/common/loanLibrary:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 根据ID借书图书
+      parameters:
+      - description: 图书Id
+        in: query
+        name: library_id
+        required: true
+        type: string
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "404":
+          description: Not Found
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 借书图书
+      tags:
+      - user/common
+  /user/common/putUserPwd:
+    put:
+      consumes:
+      - multipart/form-data
+      description: 会执行修改密码操作
+      parameters:
+      - description: 密码
+        in: formData
+        name: pwd
+        required: true
+        type: string
+      - description: 新密码
+        in: formData
+        name: pwd1
+        required: true
+        type: string
+      - description: 确认密码
+        in: formData
+        name: pwd2
+        required: true
+        type: string
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 修改密码
+      tags:
+      - user/common
+  /user/logout:
+    get:
+      consumes:
+      - multipart/form-data
+      description: 会执行用户退出操作
+      produces:
+      - application/json
+      responses:
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+      summary: 用户退出
+      tags:
+      - user
+swagger: "2.0"
