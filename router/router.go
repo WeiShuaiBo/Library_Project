@@ -19,7 +19,7 @@ func New() *gin.Engine {
 		router.GET("/", logic.GetAllBook)
 	}
 	user := router.Group("user")
-	//user.Use(AuthCheck())
+	user.Use(AuthCheck())
 	{
 		//用户查看个人信息
 		user.GET("/", logic.GetUser)
@@ -34,11 +34,12 @@ func New() *gin.Engine {
 	}
 	//管理员功能
 	manager := router.Group("/manager")
+	manager.Use(AuthCheck())
 	{
 		//查询所有用户信息
 		manager.GET("/user", logic.GetAllUser)
 		//查看指定用户的借阅信息
-		manager.GET("/user/:id")
+		manager.GET("/user/:id", logic.GetUserBorrow)
 		//查看所有图书的借阅信息
 		manager.GET("/", logic.GetALlBookBorrow)
 		//添加图书
@@ -47,7 +48,7 @@ func New() *gin.Engine {
 		manager.DELETE("/book/:book_name", logic.DeleteBook)
 	}
 	//用户登录界面
-	login := router.Group("")
+	login := router.Group("log")
 	{
 		//用户登录
 		login.POST("/login", logic.Login)

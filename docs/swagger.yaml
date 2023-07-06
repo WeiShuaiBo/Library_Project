@@ -21,6 +21,24 @@ definitions:
         description: 图书ID
         type: integer
     type: object
+  dao.User:
+    properties:
+      create_time:
+        description: 用户创建时间
+        type: string
+      id:
+        description: 用户ID
+        type: integer
+      name:
+        description: 用户名
+        type: string
+      pwd:
+        description: 用户密码
+        type: string
+      type:
+        description: 用户的类别,0：普通用户,1：图书管理员
+        type: string
+    type: object
   tools.HttpCode:
     properties:
       code:
@@ -78,18 +96,70 @@ paths:
       summary: 获取图书信息
       tags:
       - library
-  /login:
+  /log/login:
     post:
       description: 用户登录
       responses: {}
       summary: 用户登录
       tags:
       - login
-  /logout:
+  /log/logout:
     get:
       description: 用户退出登录
       responses: {}
       summary: 用户退出登录
+      tags:
+      - login
+  /log/register:
+    post:
+      consumes:
+      - application/json
+      description: 用户注册
+      parameters:
+      - description: 用户名
+        in: formData
+        name: name
+        type: string
+      - description: 密码
+        in: formData
+        name: pwd
+        type: string
+      - description: 0:普通用户，1:超级用户
+        in: body
+        name: type
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/dao.User'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/dao.User'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/dao.User'
+              type: object
+      summary: 用户注册
       tags:
       - login
   /manager:
@@ -134,13 +204,6 @@ paths:
       summary: 查看指定用户的借阅信息
       tags:
       - manager
-  /register:
-    post:
-      description: 用户注册
-      responses: {}
-      summary: 用户注册
-      tags:
-      - login
   /user:
     get:
       description: 查看用户信息

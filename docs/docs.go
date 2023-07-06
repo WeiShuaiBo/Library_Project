@@ -26,7 +26,7 @@ const docTemplate = `{
                 "responses": {}
             }
         },
-        "/login": {
+        "/log/login": {
             "post": {
                 "description": "用户登录",
                 "tags": [
@@ -36,7 +36,7 @@ const docTemplate = `{
                 "responses": {}
             }
         },
-        "/logout": {
+        "/log/logout": {
             "get": {
                 "description": "用户退出登录",
                 "tags": [
@@ -44,6 +44,99 @@ const docTemplate = `{
                 ],
                 "summary": "用户退出登录",
                 "responses": {}
+            }
+        },
+        "/log/register": {
+            "post": {
+                "description": "用户注册",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "login"
+                ],
+                "summary": "用户注册",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "用户名",
+                        "name": "name",
+                        "in": "formData"
+                    },
+                    {
+                        "type": "string",
+                        "description": "密码",
+                        "name": "pwd",
+                        "in": "formData"
+                    },
+                    {
+                        "description": "0:普通用户，1:超级用户",
+                        "name": "type",
+                        "in": "body",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/tools.HttpCode"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dao.User"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/tools.HttpCode"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dao.User"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/tools.HttpCode"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/dao.User"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
             }
         },
         "/manager": {
@@ -103,16 +196,6 @@ const docTemplate = `{
                     "manager"
                 ],
                 "summary": "查看指定图书的借阅记录",
-                "responses": {}
-            }
-        },
-        "/register": {
-            "post": {
-                "description": "用户注册",
-                "tags": [
-                    "login"
-                ],
-                "summary": "用户注册",
                 "responses": {}
             }
         },
@@ -252,6 +335,31 @@ const docTemplate = `{
                 "id": {
                     "description": "图书ID",
                     "type": "integer"
+                }
+            }
+        },
+        "dao.User": {
+            "type": "object",
+            "properties": {
+                "create_time": {
+                    "description": "用户创建时间",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "用户ID",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "用户名",
+                    "type": "string"
+                },
+                "pwd": {
+                    "description": "用户密码",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "用户的类别,0：普通用户,1：图书管理员",
+                    "type": "string"
                 }
             }
         },

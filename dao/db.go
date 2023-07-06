@@ -10,12 +10,11 @@ var GlobalConn *gorm.DB
 
 func New() {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8mb4&loc=Local&parseTime=True", "root", "123456", "127.0.0.1", 3306, "library")
-	db, err := gorm.Open(mysql.Open(dsn))
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		fmt.Println("数据库连接失败！")
 	}
 	GlobalConn = db
-	_ = GlobalConn.AutoMigrate(Xxx{})
 }
 func Close() {
 	db, _ := GlobalConn.DB()
