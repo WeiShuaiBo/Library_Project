@@ -1,0 +1,24 @@
+{"level":"error","time":"2023/07/05 - 09:02:57.399","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:113","message":"借书出错：json: cannot unmarshal number into Go struct field Book.Name of type string"}
+{"level":"error","time":"2023/07/05 - 09:06:48.828","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:124","message":"借书出错：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 09:08:07.012","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:92","message":"借书出错：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 09:09:01.951","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:127","message":"借书出错：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 09:09:09.402","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:127","message":"借书出错：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 09:10:03.148","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:127","message":"借书出错：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 09:10:10.477","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:127","message":"借书出错：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 09:11:12.894","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:128","message":"借书出错：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 09:23:54.992","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:77","message":"个人信息错误：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 09:25:25.946","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:78","message":"个人信息错误：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 09:29:42.743","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:78","message":"个人信息错误：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 09:46:12.117","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:80","message":"个人信息错误：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 09:47:12.675","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:81","message":"个人信息错误：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 09:47:48.643","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:81","message":"个人信息错误：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 09:48:01.536","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:81","message":"个人信息错误：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 09:48:02.764","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:81","message":"个人信息错误：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 09:52:51.405","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:83","message":"个人信息错误：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 10:00:42.100","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:125","message":"借书出错：EOF"}
+{"level":"error","time":"2023/07/05 - 10:01:21.402","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:138","message":"借书出错：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 10:03:01.955","caller":"W:/Go/workspace/Library_Project/controller/system/user.go:138","message":"借书出错：strconv.Atoi: parsing \"\": invalid syntax"}
+{"level":"error","time":"2023/07/05 - 11:27:23.590","caller":"W:/Go/workspace/Library_Project/core/server.go:31","message":"listen tcp :8181: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted."}
+{"level":"error","time":"2023/07/05 - 14:04:52.517","caller":"W:/Go/workspace/Library_Project/controller/system/admin.go:37","message":"搜索某人借阅记录：json: Unmarshal(non-pointer int)"}
+{"level":"error","time":"2023/07/05 - 14:06:43.832","caller":"W:/Go/workspace/Library_Project/controller/system/admin.go:39","message":"搜索某人借阅记录：json: cannot unmarshal object into Go value of type int"}
+{"level":"error","time":"2023/07/05 - 14:08:06.190","caller":"W:/Go/workspace/Library_Project/controller/system/admin.go:40","message":"搜索某人借阅记录：json: cannot unmarshal object into Go value of type string"}

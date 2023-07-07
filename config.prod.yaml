@@ -1,0 +1,90 @@
+# jwt configuration
+jwt:
+  signing-key: 'fast'
+  expires-time: 1800
+  buffer-time: 1740
+
+# mysql connect configuration
+mysql:
+  path: '127.0.0.1:3306'
+  config: 'charset=utf8mb4&parseTime=True&loc=Local'
+  db-name: 'library_project'
+  username: 'root'
+  password: '123456'
+  max-idle-conns: 200
+  max-open-conns: 800
+  conn-max-lifetime: 18000000000000 # 五个小时
+  log-mode: 'error'
+  log-zap: false
+
+redis:
+  addr: "172.21.1.97:6379"
+  db: 0
+  maxretries: 3
+  minidleconns: 5
+  password: ""
+  poolsize: 10
+  is_used: false
+
+system:
+  env: 'public'  # Change to "develop" to skip authentication for development mode
+  port: 8181
+  enabled-multipoint: true
+  oss-type: 'local'
+  enable-cors: true
+
+zap:
+  level: info
+  prefix: ''
+  format: json
+  director: log
+  encode-level: LowercaseLevelEncoder
+  stacktrace-key: stacktrace
+  max-age: 0
+  show-line: true
+  log-in-console: true
+
+
+
+swagger:
+  enabled: true
+  title: "Fast-Gin API"
+  description: "Fast-Gin is a lightweight, front-end separated Go rapid development platform for rapid project development and delivery"
+  version: "1.0"
+  host: "127.0.0.1:8181"
+  base-path: ""
+  schemes: [ "http","https" ]
+
+#本地
+local:
+  local-file-path: uploads/file
+
+#阿里云
+aliyun-oss:
+  endpoint: yourEndpoint
+  access-key-id: yourAccessKeyId
+  access-key-secret: yourAccessKeySecret
+  bucket-name: yourBucketName
+  bucket-url: yourBucketUrl
+  base-path: yourBasePath
+
+#七牛云
+qiniu:
+  zone: ZoneHuaDong
+  bucket: ""
+  img-path: ""
+  use-https: false
+  access-key: ""
+  secret-key: ""
+  use-cdn-domains: false
+  private: true
+
+#腾讯云
+tencent-cos:
+  bucket: xxxxx-10005608
+  region: ap-shanghai
+  secret-id: your-secret-id
+  secret-key: your-secret-key
+  base-url: https://gin.vue.admin
+  path-prefix: github.com/flipped-aurora/gin-vue-admin/server
+

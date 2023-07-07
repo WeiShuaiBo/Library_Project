@@ -1,0 +1,313 @@
+{"level":"info","time":"2023/07/05 - 08:32:42.656","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 08:32:42.683","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 08:32:42.684","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 08:32:42.688","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 08:33:01.354","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 08:33:01.377","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 08:33:01.378","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 08:33:01.382","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 08:48:02.904","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 08:48:02.932","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 08:48:02.933","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 08:48:02.940","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 08:50:12.529","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 08:50:12.550","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 08:50:12.550","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 08:50:12.564","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 08:54:39.186","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 08:54:39.217","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 08:54:39.217","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 08:54:39.227","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 08:55:28.586","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 08:55:28.613","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 08:55:28.613","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 08:55:28.628","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 08:57:41.546","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 08:57:41.569","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 08:57:41.569","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 08:57:41.577","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:01:54.474","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:01:54.501","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:01:54.502","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:01:54.505","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:02:55.355","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:02:55.383","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:02:55.384","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:02:55.398","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:04:17.246","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:04:17.274","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:04:17.274","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:04:17.289","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:04:55.269","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:04:55.297","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:04:55.298","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:04:55.313","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:05:05.886","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:05:05.908","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:05:05.909","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:05:05.909","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:06:09.740","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:06:09.765","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:06:09.765","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:06:09.782","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:06:46.804","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:06:46.831","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:06:46.832","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:06:46.848","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:07:50.535","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:07:50.561","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:07:50.562","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:07:50.562","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:08:55.665","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:08:55.692","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:08:55.692","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:08:55.704","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:10:00.723","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:10:00.750","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:10:00.751","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:10:00.753","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:11:09.900","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:11:09.920","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:11:09.921","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:11:09.936","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:16:01.390","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:16:01.422","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:16:01.422","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:16:01.428","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:23:50.213","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:23:50.241","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:23:50.242","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:23:50.252","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:25:23.555","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:25:23.583","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:25:23.583","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:25:23.590","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:29:42.129","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:29:42.157","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:29:42.157","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:29:42.158","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:40:03.437","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:40:03.464","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:40:03.464","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:40:03.469","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:42:29.499","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:42:29.526","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:42:29.526","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:42:29.540","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:46:10.903","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:46:10.930","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:46:10.930","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:46:10.938","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:47:11.600","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:47:11.628","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:47:11.628","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:47:11.629","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:48:01.117","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:48:01.144","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:48:01.144","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:48:01.152","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:49:13.544","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:49:13.570","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:49:13.570","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:49:13.574","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:50:00.470","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:50:00.495","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:50:00.496","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:50:00.499","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:52:40.997","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:52:41.024","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:52:41.024","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:52:41.033","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:56:51.124","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:56:51.150","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:56:51.151","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:56:51.167","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 09:57:40.490","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 09:57:40.518","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 09:57:40.519","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 09:57:40.531","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 10:05:01.634","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 10:05:01.663","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 10:05:01.663","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 10:05:01.667","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 10:08:16.519","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 10:08:16.547","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 10:08:16.547","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 10:08:16.558","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 10:11:40.481","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 10:11:40.502","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 10:11:40.503","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 10:11:40.503","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 10:21:36.127","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 10:21:36.155","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 10:21:36.155","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 10:21:36.169","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 10:23:25.273","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 10:23:25.299","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 10:23:25.300","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 10:23:25.306","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 10:36:15.893","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 10:36:15.921","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 10:36:15.921","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 10:36:15.936","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 10:37:33.289","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 10:37:33.317","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 10:37:33.318","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 10:37:33.320","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 10:38:39.522","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 10:38:39.549","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 10:38:39.550","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 10:38:39.558","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 10:41:11.042","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 10:41:11.068","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 10:41:11.069","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 10:41:11.083","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:01:47.845","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:01:47.873","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:01:47.874","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:01:47.879","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:03:39.762","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:03:39.787","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:03:39.787","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:03:39.794","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:05:09.694","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:05:09.722","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:05:09.723","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:05:09.730","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:09:38.661","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:09:38.690","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:09:38.691","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:09:38.698","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:12:21.231","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:12:21.260","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:12:21.261","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:12:21.275","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:15:55.534","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:15:55.562","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:15:55.562","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:15:55.571","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:16:59.225","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:16:59.251","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:16:59.251","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:16:59.272","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:21:11.152","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:21:11.179","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:21:11.179","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:21:11.189","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:23:50.045","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:23:50.075","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:23:50.076","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:23:50.083","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:24:02.159","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:24:02.187","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:24:02.187","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:24:02.188","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:25:25.481","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:25:25.508","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:25:25.508","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:25:25.521","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:26:23.207","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:26:23.234","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:26:23.234","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:26:23.235","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:27:20.132","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:27:20.160","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:27:20.161","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:27:20.174","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:27:23.544","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:27:23.576","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:27:23.576","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:27:23.588","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:27:32.143","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:27:32.168","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:27:32.168","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:27:32.173","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:31:18.912","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:31:18.950","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:31:18.950","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:31:18.960","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:32:04.775","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:32:04.804","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:32:04.804","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:32:04.814","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:32:32.618","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:32:32.645","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:32:32.645","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:32:32.653","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 11:39:03.786","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 11:39:03.819","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 11:39:03.819","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 11:39:03.827","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 13:59:52.436","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 13:59:52.461","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 13:59:52.462","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 13:59:52.468","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 14:01:11.961","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 14:01:11.983","caller":"W:/Go/workspace/Library_Project/initialize/router.go:36","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 14:01:11.984","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 14:01:11.986","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 14:03:05.405","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 14:04:32.664","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 14:04:32.693","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 14:04:32.693","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 14:04:32.695","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 14:05:50.505","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 14:05:50.535","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 14:05:50.536","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 14:05:50.541","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 14:06:17.914","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 14:06:17.941","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 14:06:17.941","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 14:06:17.948","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 14:06:36.264","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 14:06:36.293","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 14:06:36.293","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 14:06:36.303","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 14:08:04.493","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 14:08:04.520","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 14:08:04.520","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 14:08:04.526","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 14:13:28.871","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 14:13:28.898","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 14:13:28.898","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 14:13:28.907","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 14:27:27.046","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 14:27:27.074","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 14:27:27.075","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 14:27:27.077","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 14:28:50.802","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 14:28:50.827","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 14:28:50.827","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 14:28:50.835","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 14:29:24.608","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 14:29:24.637","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 14:29:24.638","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 14:29:24.650","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 14:34:13.711","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 14:34:13.738","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 14:34:13.738","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 14:34:13.748","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 14:34:54.056","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 14:34:54.083","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 14:34:54.083","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 14:34:54.099","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 14:35:45.648","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 14:35:45.675","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 14:35:45.676","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 14:35:45.689","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 14:36:31.574","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 14:36:31.606","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 14:36:31.607","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 14:36:31.611","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 17:52:17.296","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 17:52:17.323","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 17:52:17.323","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 17:52:17.324","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 17:54:12.477","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 17:54:12.501","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 17:54:12.502","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 17:54:12.512","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
+{"level":"info","time":"2023/07/05 - 19:46:49.557","caller":"W:/Go/workspace/Library_Project/initialize/gorm.go:65","message":"数据库连接成功"}
+{"level":"info","time":"2023/07/05 - 19:46:49.587","caller":"W:/Go/workspace/Library_Project/initialize/router.go:37","message":"router register success"}
+{"level":"info","time":"2023/07/05 - 19:46:49.588","caller":"W:/Go/workspace/Library_Project/initialize/swagger.go:21","message":"register swagger handler"}
+{"level":"info","time":"2023/07/05 - 19:46:49.589","caller":"W:/Go/workspace/Library_Project/core/server.go:26","message":"server run success on","address":":8181"}
