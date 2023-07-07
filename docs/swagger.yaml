@@ -1,0 +1,358 @@
+basePath: /
+definitions:
+  logic.Token:
+    properties:
+      access_token:
+        type: string
+      refresh_token:
+        type: string
+    type: object
+  tools.HttpCode:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: 实现图书的借阅
+  title: 图书管理系统
+  version: "1.0"
+paths:
+  /all/ad/book:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 管理员可以输入图书的所有信息来增加图书
+      parameters:
+      - description: Name of the book
+        in: formData
+        name: book_name
+        required: true
+        type: string
+      - description: Author of the book
+        in: formData
+        name: author
+        required: true
+        type: string
+      - description: Publishing house of the book
+        in: formData
+        name: publishing_house
+        required: true
+        type: string
+      - description: Translator of the book
+        in: formData
+        name: translator
+        required: true
+        type: string
+      - description: 'Publish date of the book (format: 2006-01-02)'
+        in: formData
+        name: publish_date
+        required: true
+        type: string
+      - description: Number of pages in the book
+        in: formData
+        name: pages
+        required: true
+        type: string
+      - description: IBSN of the book
+        in: formData
+        name: IBSN
+        required: true
+        type: string
+      - description: Price of the book
+        in: formData
+        name: price
+        required: true
+        type: string
+      - description: Brief introduction of the book
+        in: formData
+        name: brief_introduction
+        required: true
+        type: string
+      - description: Author introduction of the book
+        in: formData
+        name: author_introduction
+        required: true
+        type: string
+      - description: URL of the book cover image
+        in: formData
+        name: img_url
+        required: true
+        type: string
+      - description: Deletion flag of the book (0 or 1)
+        in: formData
+        name: del_flg
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: 添加书记
+      tags:
+      - administrator
+  /all/ad/book/{book_name}:
+    delete:
+      consumes:
+      - application/json
+      description: 管理员可以根据书籍名字来删除书
+      parameters:
+      - description: Name of the book to delete
+        in: path
+        name: book_name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: 删除书籍
+      tags:
+      - administrator
+    get:
+      consumes:
+      - application/json
+      description: 管理员可以根据书籍的名字来查看书的借阅信息
+      parameters:
+      - description: Book Name
+        in: path
+        name: book_name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: 查询书的借阅信息
+      tags:
+      - administrator
+  /all/ad/user/{name}:
+    get:
+      consumes:
+      - application/json
+      description: 管理员可以根据用户的名子来查看用户的借阅信息
+      parameters:
+      - description: Username
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: 借阅信息
+      tags:
+      - administrator
+  /all/ad/users:
+    get:
+      description: 管理园可以查看所有的借阅信息
+      produces:
+      - application/json
+      responses: {}
+      summary: 查看所有借阅信息
+      tags:
+      - administrator
+  /all/borrow/{book_name}:
+    post:
+      consumes:
+      - application/json
+      description: 用户进行借书
+      parameters:
+      - description: Book Name
+        in: path
+        name: book_name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: 借书
+      tags:
+      - user
+  /all/borrowing:
+    get:
+      description: 用户可以查看自己的借阅记录
+      produces:
+      - application/json
+      responses: {}
+      summary: 借阅记录
+      tags:
+      - user
+  /all/enroll:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 会执行注册操作
+      parameters:
+      - description: The name of the user
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: The password for the user account
+        in: formData
+        name: password
+        required: true
+        type: string
+      - description: The phone number of the user
+        in: formData
+        name: phone
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: 注册
+      tags:
+      - all
+  /all/getBook/{book_name}:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: 书名
+        in: path
+        name: book_name
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: 可以根据某一本图书的名字，作者查询到书的所有信息
+      tags:
+      - all
+  /all/getBooks:
+    get:
+      parameters:
+      - default: "1"
+        description: 页码
+        in: query
+        name: page
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+      summary: 游客可以查看所有的图书
+      tags:
+      - all
+  /all/login:
+    post:
+      consumes:
+      - multipart/form-data
+      description: 会执行登录操作
+      parameters:
+      - description: 用户名
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: 密码
+        in: formData
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  $ref: '#/definitions/logic.Token'
+              type: object
+      summary: 登录
+      tags:
+      - all
+  /all/logout:
+    get:
+      consumes:
+      - application/json
+      description: 会执行用户退出操作
+      produces:
+      - application/json
+      responses: {}
+      summary: 用户退出
+      tags:
+      - user
+  /all/return/{book_name}:
+    post:
+      consumes:
+      - application/json
+      description: 根据图书名称归还图书
+      parameters:
+      - description: 图书名称
+        in: path
+        name: book_name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: 还书
+      tags:
+      - user
+  /all/user:
+    post:
+      description: 用户登录过后可以查看自己的信息
+      parameters:
+      - default: "123"
+        description: 调试模式
+        in: header
+        name: debug
+        type: string
+      responses: {}
+      summary: 用户查阅信息
+      tags:
+      - user
+    put:
+      consumes:
+      - multipart/form-data
+      description: 用户登录过后可以修改自己的用户信息
+      parameters:
+      - default: "123"
+        description: 调试模式
+        in: header
+        name: debug
+        type: string
+      - description: The name of the user
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: The password for the user account
+        in: formData
+        name: password
+        required: true
+        type: string
+      - description: The phone number of the user
+        in: formData
+        name: phone
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses: {}
+      summary: 更新用户信息
+      tags:
+      - user
+swagger: "2.0"

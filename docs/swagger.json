@@ -1,0 +1,533 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "实现图书的借阅",
+        "title": "图书管理系统",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "paths": {
+        "/all/ad/book": {
+            "post": {
+                "description": "管理员可以输入图书的所有信息来增加图书",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "administrator"
+                ],
+                "summary": "添加书记",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Name of the book",
+                        "name": "book_name",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Author of the book",
+                        "name": "author",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Publishing house of the book",
+                        "name": "publishing_house",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Translator of the book",
+                        "name": "translator",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Publish date of the book (format: 2006-01-02)",
+                        "name": "publish_date",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Number of pages in the book",
+                        "name": "pages",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "IBSN of the book",
+                        "name": "IBSN",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Price of the book",
+                        "name": "price",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Brief introduction of the book",
+                        "name": "brief_introduction",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Author introduction of the book",
+                        "name": "author_introduction",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "URL of the book cover image",
+                        "name": "img_url",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Deletion flag of the book (0 or 1)",
+                        "name": "del_flg",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/all/ad/book/{book_name}": {
+            "get": {
+                "description": "管理员可以根据书籍的名字来查看书的借阅信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "administrator"
+                ],
+                "summary": "查询书的借阅信息",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Book Name",
+                        "name": "book_name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            },
+            "delete": {
+                "description": "管理员可以根据书籍名字来删除书",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "administrator"
+                ],
+                "summary": "删除书籍",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Name of the book to delete",
+                        "name": "book_name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/all/ad/user/{name}": {
+            "get": {
+                "description": "管理员可以根据用户的名子来查看用户的借阅信息",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "administrator"
+                ],
+                "summary": "借阅信息",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Username",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/all/ad/users": {
+            "get": {
+                "description": "管理园可以查看所有的借阅信息",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "administrator"
+                ],
+                "summary": "查看所有借阅信息",
+                "responses": {}
+            }
+        },
+        "/all/borrow/{book_name}": {
+            "post": {
+                "description": "用户进行借书",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "借书",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Book Name",
+                        "name": "book_name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/all/borrowing": {
+            "get": {
+                "description": "用户可以查看自己的借阅记录",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "借阅记录",
+                "responses": {}
+            }
+        },
+        "/all/enroll": {
+            "post": {
+                "description": "会执行注册操作",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "all"
+                ],
+                "summary": "注册",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "The name of the user",
+                        "name": "name",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "The password for the user account",
+                        "name": "password",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "The phone number of the user",
+                        "name": "phone",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/all/getBook/{book_name}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "all"
+                ],
+                "summary": "可以根据某一本图书的名字，作者查询到书的所有信息",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "书名",
+                        "name": "book_name",
+                        "in": "path"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/all/getBooks": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "all"
+                ],
+                "summary": "游客可以查看所有的图书",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "1",
+                        "description": "页码",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/tools.HttpCode"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/tools.HttpCode"
+                        }
+                    }
+                }
+            }
+        },
+        "/all/login": {
+            "post": {
+                "description": "会执行登录操作",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "all"
+                ],
+                "summary": "登录",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "用户名",
+                        "name": "name",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "密码",
+                        "name": "password",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/tools.HttpCode"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/logic.Token"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/tools.HttpCode"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/logic.Token"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/all/logout": {
+            "get": {
+                "description": "会执行用户退出操作",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "用户退出",
+                "responses": {}
+            }
+        },
+        "/all/return/{book_name}": {
+            "post": {
+                "description": "根据图书名称归还图书",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "还书",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "图书名称",
+                        "name": "book_name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/all/user": {
+            "put": {
+                "description": "用户登录过后可以修改自己的用户信息",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "更新用户信息",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "123",
+                        "description": "调试模式",
+                        "name": "debug",
+                        "in": "header"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The name of the user",
+                        "name": "name",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "The password for the user account",
+                        "name": "password",
+                        "in": "formData",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "The phone number of the user",
+                        "name": "phone",
+                        "in": "formData",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            },
+            "post": {
+                "description": "用户登录过后可以查看自己的信息",
+                "tags": [
+                    "user"
+                ],
+                "summary": "用户查阅信息",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "default": "123",
+                        "description": "调试模式",
+                        "name": "debug",
+                        "in": "header"
+                    }
+                ],
+                "responses": {}
+            }
+        }
+    },
+    "definitions": {
+        "logic.Token": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "type": "string"
+                },
+                "refresh_token": {
+                    "type": "string"
+                }
+            }
+        },
+        "tools.HttpCode": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer"
+                },
+                "data": {},
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
