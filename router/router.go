@@ -15,7 +15,9 @@ func New() *gin.Engine {
 	router := gin.Default()
 	//图书查询功能
 	{
+		//查看指定图书信息
 		router.GET("/:book_name", logic.GetBook)
+		//查看全部图书信息
 		router.GET("/", logic.GetAllBook)
 	}
 	user := router.Group("user")
@@ -28,13 +30,13 @@ func New() *gin.Engine {
 		//用户查看自己的借阅信息
 		user.GET("/book", logic.GetMyBook)
 		//用户借阅图书
-		user.POST("/book/:book_name", logic.Borrow)
-		//用户归还图书
-		user.GET("/book/:book_name", logic.GiveBack)
+		user.POST("/book/:book_id", logic.Borrow)
+		////用户归还图书
+		user.GET("/book/:book_id", logic.GiveBack)
 	}
 	//管理员功能
 	manager := router.Group("/manager")
-	manager.Use(AuthCheck())
+
 	{
 		//查询所有用户信息
 		manager.GET("/user", logic.GetAllUser)
@@ -45,7 +47,7 @@ func New() *gin.Engine {
 		//添加图书
 		manager.POST("/book", logic.AddBook)
 		//删除图书
-		manager.DELETE("/book/:book_name", logic.DeleteBook)
+		manager.DELETE("/book/:book_id", logic.DeleteBook)
 	}
 	//用户登录界面
 	login := router.Group("log")
@@ -62,31 +64,36 @@ func New() *gin.Engine {
 }
 func AuthCheck() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		//用于测试，免验签
-		if c.GetHeader("Debug") != "" {
+		//测试模式不需要验签,需要自己在请求的头部伪造一个Debug数据
+		if c.GetHeader("debug") != "" {
 			c.Next()
 			return
 		}
-		auth := c.GetHeader("authorization")
-		fmt.Println("authorization:", auth)
+		auth := c.GetHeader("Authorization")
+		auth = auth[7:]
+		fmt.Printf("auth:%+v\n", auth)
 		data, err := tools.Token.VerifyToken(auth)
 		if err != nil {
+			//终止请求并返回json响应
 			c.AbortWithStatusJSON(http.StatusUnauthorized, tools.HttpCode{
 				Code:    tools.UnLoginErr,
-				Message: "验签失败",
+				Message: "验签失败！",
 			})
 		}
-		fmt.Println("data:", data)
+		fmt.Printf("data:%+v\n", data)
 		if data.ID <= 0 || data.Name == "" {
+			//如果用户没有登录，中间件直接返回，不再向后继续
 			c.AbortWithStatusJSON(http.StatusUnauthorized, tools.HttpCode{
-				Code:    tools.UnFoundErr,
-				Message: "用户信息获取失败",
+				Code:    tools.UnLoginErr,
+				Message: "用户信息获取错误",
 			})
 			return
 		}
+
+		//将用户信息塞到Context中
 		c.Set("name", data.Name)
 		c.Set("userId", data.ID)
-		c.Next()
 
+		c.Next()
 	}
 }

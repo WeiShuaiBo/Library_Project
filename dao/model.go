@@ -10,12 +10,20 @@ type User struct {
 	CreateTime time.Time `json:"create_time"`                         //用户创建时间
 }
 type Book struct {
-	Id          int64     `json:"id"`                             //图书ID
-	BookName    string    `json:"book_name" form:"book_name"`     //书名
-	Author      string    `json:"author" form:"author"`           //作者
-	Description string    `json:"description" form:"description"` //描述
-	Count       int       `json:"count" form:"count"`             //图书数量
-	CreateTime  time.Time //图书添加时间
+	Id                 int64     `json:"id" form:"id"`                                      //书的ID
+	BookName           string    `json:"book_name" form:"book_name"`                        //书名
+	Author             string    `json:"author" form:"author"`                              //作者
+	PublishingHouse    string    `json:"publishing_house" form:"publishing_house"`          //出版社
+	Translator         string    `json:"translator" form:"translator"`                      //译者
+	PublishDate        time.Time `json:"publish_date" form:"publish_date" gorm:"type:data"` //出版时间
+	Pages              int       `json:"pages" form:"pages"`                                //页数
+	ISBN               string    `json:"isbn" form:"isbn"`                                  //ISBN号码
+	Price              float64   `json:"price" form:"price"`                                //价格
+	BriefIntroduction  string    `json:"brief_introduction" form:"brief_introduction"`      //内容简介
+	AuthorIntroduction string    `json:"author_introduction" form:"author_introduction"`    //作者简介
+	ImgUrl             string    `json:"img_url" form:"img_url"`                            //封面地址
+	Count              int       `json:"count" form:"count"`                                //库存
+	DelFlg             int       `json:"del_flg" form:"del_flg"`                            //删除标识
 }
 type UserBook struct {
 	Id         int64     `json:"id"`          //序列号

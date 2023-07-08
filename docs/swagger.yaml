@@ -5,38 +5,44 @@ definitions:
       author:
         description: 作者
         type: string
+      author_introduction:
+        description: 作者简介
+        type: string
       book_name:
         description: 书名
         type: string
+      brief_introduction:
+        description: 内容简介
+        type: string
       count:
-        description: 图书数量
+        description: 库存
         type: integer
-      createTime:
-        description: 图书添加时间
-        type: string
-      description:
-        description: 描述
-        type: string
+      del_flg:
+        description: 删除标识
+        type: integer
       id:
-        description: 图书ID
+        description: 书的ID
         type: integer
-    type: object
-  dao.User:
-    properties:
-      create_time:
-        description: 用户创建时间
+      img_url:
+        description: 封面地址
         type: string
-      id:
-        description: 用户ID
+      isbn:
+        description: ISBN号码
+        type: string
+      pages:
+        description: 页数
         type: integer
-      name:
-        description: 用户名
+      price:
+        description: 价格
+        type: number
+      publish_date:
+        description: 出版时间
         type: string
-      pwd:
-        description: 用户密码
+      publishing_house:
+        description: 出版社
         type: string
-      type:
-        description: 用户的类别,0：普通用户,1：图书管理员
+      translator:
+        description: 译者
         type: string
     type: object
   tools.HttpCode:
@@ -57,7 +63,34 @@ paths:
   /:
     get:
       description: 获取所有图书信息
-      responses: {}
+      parameters:
+      - description: 需要查询的页数
+        in: query
+        name: page
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/dao.Book'
+                  type: array
+              type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            allOf:
+            - $ref: '#/definitions/tools.HttpCode'
+            - properties:
+                data:
+                  items:
+                    $ref: '#/definitions/dao.Book'
+                  type: array
+              type: object
       summary: 获取所有图书信息
       tags:
       - library
@@ -72,6 +105,10 @@ paths:
         name: book_name
         required: true
         type: string
+      - description: 页数
+        in: query
+        name: page
+        type: string
       produces:
       - application/json
       responses:
@@ -82,7 +119,9 @@ paths:
             - $ref: '#/definitions/tools.HttpCode'
             - properties:
                 data:
-                  $ref: '#/definitions/dao.Book'
+                  items:
+                    $ref: '#/definitions/dao.Book'
+                  type: array
               type: object
         "500":
           description: Internal Server Error
@@ -91,7 +130,9 @@ paths:
             - $ref: '#/definitions/tools.HttpCode'
             - properties:
                 data:
-                  $ref: '#/definitions/dao.Book'
+                  items:
+                    $ref: '#/definitions/dao.Book'
+                  type: array
               type: object
       summary: 获取图书信息
       tags:
@@ -99,7 +140,24 @@ paths:
   /log/login:
     post:
       description: 用户登录
-      responses: {}
+      parameters:
+      - description: 用户名
+        in: formData
+        name: name
+        type: string
+      - description: 密码
+        in: formData
+        name: pwd
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
       summary: 用户登录
       tags:
       - login
@@ -112,8 +170,6 @@ paths:
       - login
   /log/register:
     post:
-      consumes:
-      - application/json
       description: 用户注册
       parameters:
       - description: 用户名
@@ -125,115 +181,314 @@ paths:
         name: pwd
         type: string
       - description: 0:普通用户，1:超级用户
-        in: body
+        in: formData
         name: type
-        schema:
-          type: string
-      produces:
-      - application/json
+        type: string
       responses:
         "200":
           description: OK
           schema:
-            allOf:
-            - $ref: '#/definitions/tools.HttpCode'
-            - properties:
-                data:
-                  $ref: '#/definitions/dao.User'
-              type: object
-        "400":
-          description: Bad Request
-          schema:
-            allOf:
-            - $ref: '#/definitions/tools.HttpCode'
-            - properties:
-                data:
-                  $ref: '#/definitions/dao.User'
-              type: object
+            $ref: '#/definitions/tools.HttpCode'
         "500":
           description: Internal Server Error
           schema:
-            allOf:
-            - $ref: '#/definitions/tools.HttpCode'
-            - properties:
-                data:
-                  $ref: '#/definitions/dao.User'
-              type: object
+            $ref: '#/definitions/tools.HttpCode'
       summary: 用户注册
       tags:
       - login
   /manager:
     get:
       description: 查看所有借阅记录
-      responses: {}
+      parameters:
+      - default: "123"
+        description: Debug header
+        in: header
+        name: Debug
+        type: string
+      - description: 页数
+        in: query
+        name: page
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
       summary: 查看所有借阅记录
-      tags:
-      - manager
-  /manager/{book_name}:
-    get:
-      description: 查看指定图书的借阅记录
-      responses: {}
-      summary: 查看指定图书的借阅记录
       tags:
       - manager
   /manager/book:
     post:
       description: 管理员添加图书信息
-      responses: {}
+      parameters:
+      - description: 图书ID
+        in: formData
+        name: id
+        type: integer
+      - description: 书名
+        in: formData
+        name: book_name
+        type: string
+      - description: 作者
+        in: formData
+        name: author
+        type: string
+      - description: 出版社
+        in: formData
+        name: publishing_house
+        type: string
+      - description: 译者
+        in: formData
+        name: translator
+        type: string
+      - description: 日期：2002-03-02
+        in: formData
+        name: publish_data
+        required: true
+        type: string
+      - description: 页数
+        in: formData
+        name: pages
+        type: integer
+      - description: isbn编号
+        in: formData
+        name: isbn
+        type: string
+      - description: 价格
+        in: formData
+        name: price
+        type: number
+      - description: 图书简介
+        in: formData
+        name: brief_introduction
+        type: string
+      - description: 作者简介
+        in: formData
+        name: author_introduction
+        type: string
+      - description: 图片链接
+        in: formData
+        name: img_url
+        type: string
+      - description: 图书数量
+        in: formData
+        name: count
+        type: integer
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
       summary: 添加图书
       tags:
       - manager
-  /manager/book/{book_name}:
+  /manager/book/{book_id}:
     delete:
       description: 管理员删除指定书名的图书信息
-      responses: {}
+      parameters:
+      - default: "123"
+        description: Debug header
+        in: header
+        name: Debug
+        type: string
+      - description: 书名
+        in: path
+        name: book_id
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
       summary: 删除图书信息
       tags:
       - manager
   /manager/user:
     get:
       description: 查看所有用户信息
-      responses: {}
+      parameters:
+      - default: "123"
+        description: Debug header
+        in: header
+        name: Debug
+        type: string
+      - description: 页数
+        in: query
+        name: page
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
       summary: 查看所有用户信息
       tags:
       - manager
   /manager/user/{id}:
     get:
       description: 查看指定用户的借阅信息
-      responses: {}
+      parameters:
+      - default: "123"
+        description: Debug header
+        in: header
+        name: Debug
+        type: string
+      - description: 页数
+        in: query
+        name: page
+        type: string
+      - description: 用户Id
+        in: path
+        name: id
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
       summary: 查看指定用户的借阅信息
       tags:
       - manager
   /user:
     get:
       description: 查看用户信息
-      responses: {}
+      parameters:
+      - default: "123"
+        description: Debug header
+        in: header
+        name: Debug
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
       summary: 查看用户信息
       tags:
       - user
     put:
       description: 修改用户信息
-      responses: {}
+      parameters:
+      - default: "123"
+        description: Debug header
+        in: header
+        name: Debug
+        type: string
+      - description: 用户名
+        in: formData
+        name: name
+        type: string
+      - description: 密码
+        in: formData
+        name: pwd
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
       summary: 修改用户信息
       tags:
       - user
   /user/book:
     get:
       description: 查看自己的借阅记录
-      responses: {}
+      parameters:
+      - default: "123"
+        description: Debug header
+        in: header
+        name: Debug
+        type: string
+      - description: 页数
+        in: query
+        name: page
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
       summary: 查看自己的借阅记录
       tags:
       - user
-  /user/book/{book_name}:
+  /user/book/{book_id}:
     get:
       description: 归还指定书名的图书
-      responses: {}
+      parameters:
+      - default: "123"
+        description: Debug
+        in: header
+        name: Debug
+        type: string
+      - description: 图书ID
+        in: path
+        name: book_id
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
       summary: 归还图书
       tags:
       - user
     post:
       description: 借阅指定书名的图书
-      responses: {}
+      parameters:
+      - default: "123"
+        description: Debug header
+        in: header
+        name: Debug
+        type: string
+      - description: 图书ID
+        in: path
+        name: book_id
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/tools.HttpCode'
       summary: 借阅图书
       tags:
       - user

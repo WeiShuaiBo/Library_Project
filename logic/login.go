@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"regexp"
 	"time"
 )
 
@@ -23,6 +24,9 @@ type Token struct {
 // @Summary 用户登录
 // @description 用户登录
 // @Tags login
+// @Param name formData string false "用户名"
+// @Param pwd formData string false "密码"
+// @response 200,500 {object} tools.HttpCode{Token}
 // @Router /log/login [POST]
 func Login(c *gin.Context) {
 	var user User
@@ -83,12 +87,10 @@ func Logout(c *gin.Context) {
 // @Summary 用户注册
 // @Description 用户注册
 // @Tags login
-// @Accept json
-// @Produce json
 // @Param name formData string false "用户名"
 // @Param pwd formData string false "密码"
 // @Param type formData string false "0:普通用户，1:超级用户"
-// @response		200,400,500	{object}	tools.HttpCode{data=dao.User}
+// @response		200,500	{object}	tools.HttpCode{dao.User}
 // @Router /log/register [POST]
 func Register(c *gin.Context) {
 	user := dao.User{}
@@ -101,9 +103,17 @@ func Register(c *gin.Context) {
 		return
 	}
 	user.CreateTime = time.Now()
-	fmt.Println(user)
-	err := dao.Register(user)
-	if err != nil {
+	ok := CheckInfo(user.Name, user.Pwd)
+	if !ok {
+		c.JSON(http.StatusOK, tools.HttpCode{
+			Code:    tools.UserInfoErr,
+			Message: "用户名或密码格式错误，请重试",
+			Data:    struct{}{},
+		})
+		return
+	}
+	ok = dao.Register(user)
+	if !ok {
 		c.JSON(http.StatusOK, tools.HttpCode{
 			Code:    tools.DOErr,
 			Message: "注册用户失败",
@@ -117,4 +127,14 @@ func Register(c *gin.Context) {
 		Data:    struct{}{},
 	})
 	return
+}
+func CheckInfo(name, pwd string) bool {
+	re := regexp.MustCompile("^[A-Za-z0-9_]{3,20}$")
+	ok1 := re.MatchString(name)
+	ok2 := re.MatchString(pwd)
+	if !ok1 || !ok2 {
+		fmt.Println("用户名或密码格式错误，请重试~")
+		return false
+	}
+	return true
 }

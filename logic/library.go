@@ -5,6 +5,7 @@ import (
 	"LibraryTest/tools"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"strconv"
 )
 
 // GetBook godoc
@@ -15,12 +16,15 @@ import (
 // @Accept json
 // @Produce json
 // @Param book_name path string true "书名"
-// @response 200,500 {object} tools.HttpCode{data=dao.Book}
+// @Param page query string false "页数"
+// @response 200,500 {object} tools.HttpCode{data=[]dao.Book}
 // @Router 		/{book_name} [GET]
 func GetBook(c *gin.Context) {
+	pageStr := c.DefaultQuery("page", "1")
+	page, _ := strconv.ParseInt(pageStr, 10, 64)
 	bookName := c.Param("book_name")
-	book := dao.GetBook(bookName)
-	if book.Id <= 0 {
+	book := dao.GetBook(bookName, page)
+	if len(book) == 0 {
 		c.JSON(http.StatusOK, tools.HttpCode{
 			Code:    tools.UnFoundErr,
 			Message: "未找到指定图书",
@@ -40,9 +44,13 @@ func GetBook(c *gin.Context) {
 // @Summary 	获取所有图书信息
 // @Description 获取所有图书信息
 // @Tags 		library
+// @Param page query string false "需要查询的页数"
+// @response 200,500 {object} tools.HttpCode{data=[]dao.Book}
 // @Router 		/  [Get]
 func GetAllBook(c *gin.Context) {
-	book := dao.GetAllBook()
+	pageStr := c.DefaultQuery("page", "1")
+	page, _ := strconv.ParseInt(pageStr, 10, 64)
+	book := dao.GetAllBook(page)
 	if len(book) == 0 {
 		c.JSON(http.StatusOK, tools.HttpCode{
 			Code:    tools.UnFoundErr,
