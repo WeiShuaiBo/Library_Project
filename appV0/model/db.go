@@ -4,7 +4,7 @@ import (
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
-	"library/logger"
+	"library/appV0/logger"
 )
 
 var GlobalConn *gorm.DB
@@ -18,7 +18,7 @@ func New() {
 	}
 	GlobalConn = conn
 
-	GlobalConn.AutoMigrate(&User{}, &Admin{}, &Book{}, &LendBooks{})
+	GlobalConn.AutoMigrate(&User{}, &Admin{}, &BookInfo{}, &UserBook{}, &BookInfo{})
 	logger.Log.Info("数据库连接成功")
 }
 func Close() {

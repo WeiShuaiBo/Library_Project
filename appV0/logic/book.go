@@ -2,8 +2,8 @@ package logic
 
 import (
 	"github.com/gin-gonic/gin"
-	"library/model"
-	"library/tools"
+	model2 "library/appV0/model"
+	"library/appV0/tools"
 	"net/http"
 )
 
@@ -17,8 +17,10 @@ import (
 //	@response		200,500	{object}	tools.HttpCode{data=[]model.APIBook}
 //	@Router			/books [get]
 func GetBooks(c *gin.Context) {
-	ret := make([]model.APIBook, 0)
-	if err := model.GetBooks(&ret); err != nil {
+	limit := c.DefaultQuery("limit", "10")
+	offset := c.DefaultQuery("offset", "0")
+	ret := make([]model2.APIBookInfo, 0)
+	if err := model2.GetBooks(&ret, limit, offset); err != nil {
 		c.JSON(http.StatusOK, tools.HttpCode{
 			Code:    tools.BookErr,
 			Message: "查询图书信息失败",
@@ -45,9 +47,11 @@ func GetBooks(c *gin.Context) {
 //	@response		200,500	{object}	tools.HttpCode{data=[]model.APIBook}
 //	@Router			/bookByKeyWord [post]
 func GetBookByKeyWord(c *gin.Context) {
+	limit := c.DefaultQuery("limit", "10")
+	offset := c.DefaultQuery("offset", "0")
 	keyWord := c.Query("keyWord")
-	ret := make([]model.APIBook, 0)
-	if err := model.GetBookByKeyWord(&ret, keyWord); err != nil {
+	ret := make([]model2.APIBookInfo, 0)
+	if err := model2.GetBookByKeyWord(&ret, keyWord, limit, offset); err != nil {
 		c.JSON(http.StatusOK, tools.HttpCode{
 			Code:    tools.BookErr,
 			Message: "根据关键词查询图书信息失败",

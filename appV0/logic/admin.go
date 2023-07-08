@@ -3,9 +3,9 @@ package logic
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"library/logger"
-	"library/model"
-	"library/tools"
+	"library/appV0/logger"
+	model2 "library/appV0/model"
+	"library/appV0/tools"
 	"net/http"
 	"strconv"
 )
@@ -20,8 +20,10 @@ import (
 //	@Response		200,500	{object}	tools.HttpCode{data=[]model.Book}
 //	@Router			/admin/books [get]
 func AdminGetBooks(c *gin.Context) {
-	ret := make([]model.Book, 0)
-	if err := model.AdminGetBooks(&ret); err != nil {
+	limit := c.DefaultQuery("limit", "10")
+	offset := c.DefaultQuery("offset", "0")
+	ret := make([]model2.BookInfo, 0)
+	if err := model2.AdminGetBooks(&ret, limit, offset); err != nil {
 		c.JSON(http.StatusOK, tools.HttpCode{
 			Code:    tools.BookErr,
 			Message: "查询图书信息失败",
@@ -48,12 +50,14 @@ func AdminGetBooks(c *gin.Context) {
 //	@Accept			json
 //	@Produce		json
 //	@Param			keyWord	query		string	true	"关键词"
-//	@Response		200,500	{object}	tools.HttpCode{data=[]model.Book}
-//	@Router			/admin/books [get]
+//	@Response		200,500	{object}	tools.HttpCode{data=[]model.BookInfo}
+//	@Router			/admin/bookByKeyWord [post]
 func AdminGetBookByKeyWord(c *gin.Context) {
+	limit := c.DefaultQuery("limit", "10")
+	offset := c.DefaultQuery("offset", "0")
 	keyWord := c.Query("keyWord")
-	ret := make([]model.Book, 0)
-	if err := model.AdminGetBookByKeyWord(&ret, keyWord); err != nil {
+	ret := make([]model2.BookInfo, 0)
+	if err := model2.AdminGetBookByKeyWord(&ret, keyWord, limit, offset); err != nil {
 		c.JSON(http.StatusOK, tools.HttpCode{
 			Code:    tools.BookErr,
 			Message: "根据关键词查询图书信息失败",
@@ -67,6 +71,7 @@ func AdminGetBookByKeyWord(c *gin.Context) {
 		Message: "根据关键词查询图书信息成功",
 		Data:    ret,
 	})
+	return
 }
 
 // AdminGetBooksById 根据Id查询书籍
@@ -80,6 +85,8 @@ func AdminGetBookByKeyWord(c *gin.Context) {
 //	@Response		200,500	{object}	tools.HttpCode{data=model.Book}
 //	@Router			/admin/book/{id} [get]
 func AdminGetBooksById(c *gin.Context) {
+	limit := c.DefaultQuery("limit", "10")
+	offset := c.DefaultQuery("offset", "0")
 	idStr := c.Param("id")
 	id, _ := strconv.ParseInt(idStr, 10, 64)
 	logger.Log.Info("id:", id)
@@ -95,8 +102,8 @@ func AdminGetBooksById(c *gin.Context) {
 		return
 	}
 
-	ret := &model.Book{}
-	if err := model.AdminGetBooksById(ret, id); err != nil {
+	ret := &model2.BookInfo{}
+	if err := model2.AdminGetBooksById(ret, idStr, limit, offset); err != nil {
 		c.JSON(http.StatusOK, tools.HttpCode{
 			Code:    tools.BookErr,
 			Message: "根据id查询图书信息失败",
@@ -121,13 +128,13 @@ func AdminGetBooksById(c *gin.Context) {
 //	@Tags			Admin
 //	@Accept			json
 //	@Produce		json
-//	@Param			name		body		string	true	"图书名字"
+//	@Param			book_name	body		string	true	"图书名字"
 //	@Param			author		body		string	true	"图书作者"
-//	@Param			number		body		string	true	"图书编号"
+//	@Param			isbn		body		string	true	"ISBN编号"
 //	@Response		200,400,500	{object}	tools.HttpCode
 //	@Router			/admin/book [post]
 func CreatBook(c *gin.Context) {
-	book := &model.Book{}
+	book := &model2.BookInfo{}
 	if c.ShouldBind(&book) != nil {
 		c.JSON(http.StatusOK, tools.HttpCode{
 			Code:    tools.AdminInfoErr,
@@ -137,7 +144,7 @@ func CreatBook(c *gin.Context) {
 		logger.Log.Error("数据格式有误")
 		return
 	}
-	if err := model.CreatBook(book); err != nil {
+	if err := model2.CreatBook(book); err != nil {
 		fmt.Printf("err:%s\n", err)
 		c.JSON(http.StatusOK, tools.HttpCode{
 			Code:    tools.AdminInfoErr,
@@ -151,8 +158,7 @@ func CreatBook(c *gin.Context) {
 	c.JSON(http.StatusOK, tools.HttpCode{
 		Code:    tools.OK,
 		Message: "添加图书成功",
-		Data: struct {
-		}{},
+		Data:    book,
 	})
 	logger.Log.Info("添加图书成功")
 	return
@@ -166,17 +172,14 @@ func CreatBook(c *gin.Context) {
 //	@Accept			json
 //	@Produce		json
 //	@Param			id			path		int		true	"更新图书id"
-//	@Param			name		body		string	true	"图书名字"
+//	@Param			book_name		body		string	true	"图书名字"
 //	@Param			author		body		string	true	"图书作者"
-//	@Param			number		body		string	true	"图书编号"
-//	@Param			lend_out	body		string	false	"图书作者"
-//	@Param			user_id		body		string	false	"图书编号"
+//	@Param			isbn		body		string	true	"图书编号"
 //	@Response		200,400,500	{object}	tools.HttpCode
 //	@Router			/admin/book/{id} [put]
 func UpdateBook(c *gin.Context) {
-	idStr := c.Param("id")
-	id, _ := strconv.ParseInt(idStr, 10, 64)
-	book := &model.Book{}
+	isbnStr := c.Param("isbn")
+	book := &model2.BookInfo{}
 	if c.ShouldBind(&book) != nil {
 		c.JSON(http.StatusOK, tools.HttpCode{
 			Code:    tools.AdminInfoErr,
@@ -186,8 +189,7 @@ func UpdateBook(c *gin.Context) {
 		logger.Log.Error("数据格式有误")
 		return
 	}
-	book.Id = id
-	if err := model.UpdateBook(book); err != nil {
+	if err := model2.UpdateBook(book, isbnStr); err != nil {
 		c.JSON(http.StatusOK, tools.HttpCode{
 			Code:    tools.AdminInfoErr,
 			Message: "更新图书失败",
@@ -200,7 +202,8 @@ func UpdateBook(c *gin.Context) {
 	c.JSON(http.StatusOK, tools.HttpCode{
 		Code:    tools.OK,
 		Message: "更新图书成功",
-		Data:    book,
+		Data: struct {
+		}{},
 	})
 	return
 }
@@ -212,34 +215,19 @@ func UpdateBook(c *gin.Context) {
 //	@Tags			Admin
 //	@Accept			json
 //	@Produce		json
-//	@Param			id			path		int	true	"删除id"
+//	@Param			isbn			path		int	true	"删除isbn"
 //	@Response		200,400,500	{object}	tools.HttpCode
-//	@Router			/admin/book/{id} [delete]
+//	@Router			/admin/book/{isbn} [delete]
 func DeleteBook(c *gin.Context) {
-	idStr := c.Param("id")
-	id, _ := strconv.ParseInt(idStr, 10, 64)
-	logger.Log.Info(id)
-
-	if id <= 0 {
-		c.JSON(http.StatusOK, tools.HttpCode{
-			Code:    tools.AdminInfoErr,
-			Message: "id数据有误",
-			Data: struct {
-			}{},
-		})
-		logger.Log.Error("id数据有误")
-		return
-	}
-
-	book := &model.Book{}
-	if err := model.DeleteBook(book, id); err != nil {
+	isbnStr := c.Param("isbn")
+	logger.Log.Info(isbnStr)
+	if err := model2.DeleteBook(isbnStr); err != nil {
 		c.JSON(http.StatusOK, tools.HttpCode{
 			Code:    tools.AdminInfoErr,
 			Message: "删除图书失败",
 			Data: struct {
 			}{},
 		})
-		logger.Log.Error("删除图书失败", err)
 		return
 	}
 	c.JSON(http.StatusOK, tools.HttpCode{
@@ -262,8 +250,10 @@ func DeleteBook(c *gin.Context) {
 //	@Response		200,500	{object}	tools.HttpCode{data=[]model.LendBooks}
 //	@Router			/admin/getInfo [get]
 func AdminGetInfo(c *gin.Context) {
-	ret := &[]model.LendBooks{}
-	if err := model.AdminGetInfo(ret); err != nil {
+	limit := c.DefaultQuery("limit", "10")
+	offset := c.DefaultQuery("offset", "0")
+	ret := &[]model2.UserBook{}
+	if err := model2.AdminGetInfo(ret, limit, offset); err != nil {
 		c.JSON(http.StatusOK, tools.HttpCode{
 			Code:    tools.UserInfoErr,
 			Message: "获取借阅表数据失败",

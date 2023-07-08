@@ -3,8 +3,8 @@ package logic
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"library/model"
-	"library/tools"
+	model2 "library/appV0/model"
+	tools2 "library/appV0/tools"
 	"time"
 
 	"net/http"
@@ -44,18 +44,18 @@ func Login(c *gin.Context) {
 	fmt.Printf("name:%s\n", n)
 	if err := c.ShouldBind(&user); err != nil {
 		fmt.Printf("绑定错误", err.Error())
-		c.JSON(http.StatusOK, tools.HttpCode{
-			Code:    tools.UserInfoErr,
+		c.JSON(http.StatusOK, tools2.HttpCode{
+			Code:    tools2.UserInfoErr,
 			Message: "用户信息校验错误",
 			Data:    struct{}{},
 		})
 		return
 	}
 
-	dbUser := model.GetUser(user.Name, user.Pwd)
+	dbUser := model2.GetUser(user.Name, user.Pwd)
 	if dbUser.Id <= 0 {
-		c.JSON(http.StatusOK, tools.HttpCode{
-			Code:    tools.UserInfoErr,
+		c.JSON(http.StatusOK, tools2.HttpCode{
+			Code:    tools2.UserInfoErr,
 			Message: "用户信息登录失败",
 			Data:    struct{}{},
 		})
@@ -64,19 +64,19 @@ func Login(c *gin.Context) {
 	id := string(dbUser.Id)
 	c.SetCookie("id", id, 0, "/", "localhost", false, true)
 	//下发token
-	a, r, err := tools.Token.GetToken(dbUser.Id, dbUser.Name)
+	a, r, err := tools2.Token.GetToken(dbUser.Id, dbUser.Name)
 	fmt.Printf("atoken:%s\n", a)
 	fmt.Printf("rtoken:%s\n", r)
 	if err != nil {
-		c.JSON(http.StatusOK, tools.HttpCode{
-			Code:    tools.UserInfoErr,
+		c.JSON(http.StatusOK, tools2.HttpCode{
+			Code:    tools2.UserInfoErr,
 			Message: "获取token失败",
 			Data:    struct{}{},
 		})
 		return
 	}
-	c.JSON(http.StatusOK, tools.HttpCode{
-		Code:    tools.OK,
+	c.JSON(http.StatusOK, tools2.HttpCode{
+		Code:    tools2.OK,
 		Message: "登录成功",
 		Data: Token{
 			AccessToken:  a,
@@ -99,36 +99,36 @@ func Login(c *gin.Context) {
 //	@Response		200,500	{object}	tools.HttpCode{data=Token}
 //	@Router			/register [POST]
 func Register(c *gin.Context) {
-	ruser := &model.User{}
+	ruser := &model2.User{}
 	if err := c.ShouldBind(&ruser); err != nil {
-		c.JSON(http.StatusOK, tools.HttpCode{
-			Code:    tools.UserInfoErr,
+		c.JSON(http.StatusOK, tools2.HttpCode{
+			Code:    tools2.UserInfoErr,
 			Message: "注册用户信息格式校验错误",
 			Data:    struct{}{},
 		})
 		return
 	}
 	ruser.CreatedTime = time.Now()
-	if model.CheckGetUserExist(ruser.Name) == true {
-		c.JSON(http.StatusOK, tools.HttpCode{
-			Code:    tools.UserInfoErr,
+	if model2.CheckGetUserExist(ruser.Name) == true {
+		c.JSON(http.StatusOK, tools2.HttpCode{
+			Code:    tools2.UserInfoErr,
 			Message: "用户名重复创建失败",
 			Data: struct {
 			}{},
 		})
 		return
 	}
-	if err := model.RegisterUser(ruser); err != nil {
-		c.JSON(http.StatusOK, tools.HttpCode{
-			Code:    tools.UserInfoErr,
+	if err := model2.RegisterUser(ruser); err != nil {
+		c.JSON(http.StatusOK, tools2.HttpCode{
+			Code:    tools2.UserInfoErr,
 			Message: "用户创建失败",
 			Data: struct {
 			}{},
 		})
 		return
 	}
-	c.JSON(http.StatusOK, tools.HttpCode{
-		Code:    tools.OK,
+	c.JSON(http.StatusOK, tools2.HttpCode{
+		Code:    tools2.OK,
 		Message: "注册成功",
 		Data: struct {
 		}{},
@@ -153,18 +153,18 @@ func AdminLogin(c *gin.Context) {
 	fmt.Printf("name:%s\n", n)
 	if err := c.ShouldBind(&user); err != nil {
 		fmt.Printf("绑定错误", err.Error())
-		c.JSON(http.StatusOK, tools.HttpCode{
-			Code:    tools.UserInfoErr,
+		c.JSON(http.StatusOK, tools2.HttpCode{
+			Code:    tools2.UserInfoErr,
 			Message: "管理员信息校验错误",
 			Data:    struct{}{},
 		})
 		return
 	}
 
-	dbUser := model.GetAdmin(user.Name, user.Pwd)
+	dbUser := model2.GetAdmin(user.Name, user.Pwd)
 	if dbUser.Id <= 0 {
-		c.JSON(http.StatusOK, tools.HttpCode{
-			Code:    tools.UserInfoErr,
+		c.JSON(http.StatusOK, tools2.HttpCode{
+			Code:    tools2.UserInfoErr,
 			Message: "管理员信息登录失败",
 			Data:    struct{}{},
 		})
@@ -173,19 +173,19 @@ func AdminLogin(c *gin.Context) {
 	id := string(dbUser.Id)
 	c.SetCookie("id", id, 0, "/", "localhost", false, true)
 	//下发token
-	a, r, err := tools.Token.AdminGetToken(dbUser.Id, dbUser.Name)
+	a, r, err := tools2.Token.AdminGetToken(dbUser.Id, dbUser.Name)
 	fmt.Printf("atoken:%s\n", a)
 	fmt.Printf("rtoken:%s\n", r)
 	if err != nil {
-		c.JSON(http.StatusOK, tools.HttpCode{
-			Code:    tools.UserInfoErr,
+		c.JSON(http.StatusOK, tools2.HttpCode{
+			Code:    tools2.UserInfoErr,
 			Message: "管理获取token失败",
 			Data:    struct{}{},
 		})
 		return
 	}
-	c.JSON(http.StatusOK, tools.HttpCode{
-		Code:    tools.OK,
+	c.JSON(http.StatusOK, tools2.HttpCode{
+		Code:    tools2.OK,
 		Message: "管理员登录成功",
 		Data: Token{
 			AccessToken:  a,
