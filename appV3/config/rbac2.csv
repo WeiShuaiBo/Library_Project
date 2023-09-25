@@ -1,0 +1,10 @@
+p,superAdmin,/article/*,*
+p,superAdmin,/admin/*,*
+p,*,/home/*,*
+p,user,/article/*,*
+
+p,user,/user/users/records/:bookId,POST
+p,user,/user/users/records/:bookId,PUT
+p,user,/user/users/GetPersonalInformation/,GET
+p,user,/user/users/UpdatePersonalInformation/,POST
+p,user,/user/users/buy/*,POST

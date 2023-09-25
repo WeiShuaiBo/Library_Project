@@ -30,9 +30,11 @@ func adminRouter(r *gin.Engine) {
 	//}
 	//书的所有资源
 	//    /admin/books
-	//book := base.Group("/books")
+	book := base.Group("/books")
 	//{
 	//	book.GET("/:id", logic.GetBook) // 直接使用谁都可以查看图书，此路径先不用
+	book.POST("/AddBook", logic.AddBook)
+	book.GET("/DeleteBook/:bookId", logic.DeleteBook)
 	//	//book.GET("", logic.SearchBook)
 	//	book.POST("", logic.AddBook)          //
 	//	book.PUT("/:id", logic.UpdateBook)    //
@@ -54,8 +56,9 @@ func adminRouter(r *gin.Engine) {
 		//所有借书还书记录
 		record.GET("/getRecords", logic.GetRecords) //
 		//所有归还或者未归还的记录
-		record.GET("/:status/:id", logic.GetUserRecordStatus) //
-
+		record.GET("/status/:id", logic.GetUserRecordStatus) //
+		record.GET("/GetPersonalInformation/:userId", logic.GetUserInformation)
+		record.GET("/GETBookRecord/:bookId", logic.GETBookRecord)
 	}
 }
 
@@ -120,7 +123,7 @@ func librarianCheck() gin.HandlerFunc {
 			})
 			return
 		}
-
+		fmt.Printf("session通过")
 		c.Set("name", Sname)
 		c.Set("id", idInt64)
 		c.Next()

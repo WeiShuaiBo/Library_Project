@@ -21,8 +21,10 @@ func userRouter(r *gin.Engine) {
 		//user.GET("/:id/records", logic.GetUserRecords)               //
 		//user.GET("/:id/records/:status", logic.GetUserStatusRecords) //
 		////用户自助借书还书
-		user.GET("/records/:bookId", logic.BorrowBook) //借书
-		user.PUT("/records/:bookId", logic.ReturnBook) //还书
+		user.POST("/records/:bookId", logic.BorrowBook) //借书
+		user.PUT("/records/:bookId", logic.ReturnBook)  //还书
+		user.GET("/GetPersonalInformation/", logic.GetPersonalInformation)
+		user.POST("/UpdatePersonalInformation/", logic.UpdatePersonalInformation)
 
 	}
 

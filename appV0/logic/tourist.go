@@ -16,23 +16,43 @@ import (
 //	@Tags			tourist
 //	@Accept			json
 //	@Produce		json
+//	@Param			pageNumber			path		int	false	"int valid"	minimum(1)
 //
 // @Success 200 {object} tools.HttpCode
 // @Failure 404 {object} tools.HttpCode
 //
-//	@Router			/ [get]
+//	@Router			/{pageNumber} [get]
 func GetAll(c *gin.Context) {
-	fmt.Printf("可以走到这里吗？")
-	ret := model.GetAll()
-	if ret[0].Id > 0 {
-		fmt.Printf("book:%+v\n", ret)
+	pageNumber := c.Param("pageNumber")
+	fmt.Println(pageNumber)
+	pageNumberInt, _ := strconv.Atoi(pageNumber)
+	if pageNumberInt == 0 {
+		pageNumberInt = 1
+	}
+	fmt.Printf("-----")
+	//pageNumberInt, _ := strconv.ParseInt(pageNumber, 10, 64)
+	fmt.Printf("%d", pageNumberInt)
+	fmt.Printf("+++++++++++++++++")
+	ret := model.GetAll(pageNumberInt)
+	if len(ret) == 0 {
 		c.JSON(http.StatusOK, tools.HttpCode{
 			Code:    tools.OK,
-			Message: "",
+			Message: "查询页码过大",
 			Data:    ret,
 		})
 		return
 	}
+	fmt.Printf("222222222222222222")
+	if ret[0].Id > 0 {
+		//fmt.Printf("book:%+v\n", ret)
+		c.JSON(http.StatusOK, tools.HttpCode{
+			Code:    tools.OK,
+			Message: "查询成功",
+			Data:    ret,
+		})
+		return
+	}
+
 	c.JSON(http.StatusNotFound, tools.HttpCode{
 		Code:    tools.NotFound,
 		Message: "数据库查询失败",
@@ -86,6 +106,50 @@ func GetBook(c *gin.Context) {
 		})
 		return
 	}
+	c.JSON(http.StatusNotFound, tools.HttpCode{
+		Code:    tools.NotFound,
+		Message: "查询数据库失败",
+		Data:    struct{}{},
+	})
+	return
+}
+
+// GetBookPhotoByName godoc
+//
+//	@Summary		根据id获得图书
+//	@Description	根据ID获得图书
+//	@Tags			tourist
+//	@Accept			multipart/form-data
+//	@Produce		json
+//	@Param			bookName			path		int	true	"int valid"	minimum(1)
+//	@response		200,404,500	{object}	tools.HttpCode{data=model.Book}
+//	@Router			/book/{bookName} [get]
+func GetBookPhotoByName(c *gin.Context) {
+	// 获取bookName参数
+	bookName := c.Param("bookName")
+	fmt.Printf(bookName)
+	// 判断是否获取到bookName
+	if bookName == "" {
+		c.JSON(http.StatusNotFound, tools.HttpCode{
+			Code:    tools.NotFound,
+			Message: "获取bookName失败",
+			Data:    struct{}{},
+		})
+		return
+	}
+	// 查询数据库
+	ret := model.GetBookByName(bookName)
+	// 判断是否查询到数据
+	if ret != nil {
+		fmt.Printf("book:%+v\n", ret)
+		//dir, _ := os.Getwd()
+		//fmt.Printf(dir)
+		filePath := "./appV0/static/images/" + ret.ImgUrl // 图片文件路径
+		c.File(filePath)
+
+		return
+	}
+
 	c.JSON(http.StatusNotFound, tools.HttpCode{
 		Code:    tools.NotFound,
 		Message: "查询数据库失败",

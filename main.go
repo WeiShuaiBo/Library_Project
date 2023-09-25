@@ -1,6 +1,8 @@
 package main
 
-import "library/appV0"
+import (
+	"library/appV5"
+)
 
 //	@title			简易图书项目API
 //	@version		0.0
@@ -9,5 +11,6 @@ import "library/appV0"
 // @host		localhost:8080
 // @BasePath	/
 func main() {
-	appV0.Start()
+	//cmd.Execute()
+	appV5.Start()
 }

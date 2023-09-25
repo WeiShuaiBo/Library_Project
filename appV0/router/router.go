@@ -15,15 +15,20 @@ func New() *gin.Engine {
 	// http://localhost:8083/swagger/index.html
 	model.New()
 	r := gin.Default()
-	r.LoadHTMLGlob("appV0/static/*")
+	r.LoadHTMLGlob("E:/workspase/go/golandWorkspace/library/appV0/static/*.html")
+	r.Static("/static", "E:/workspase/go/golandWorkspace/library/appV0/static")
+
 	userRouter(r)
 	adminRouter(r)
 	//r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	////验证码
 	r.GET("/html", logic.Html)
-	r.GET("/", logic.GetAll)
+	r.GET("/:pageNumber", logic.GetAll)
 
 	//r.GET("/GetCode", logic.SendNum)            //
+	r.POST("/Captcha", logic.Captcha)
+	r.POST("/Registered/:code", logic.Registered)
+
 	r.POST("/userLogin", logic.UserLogin) //
 	r.GET("/userLogout", logic.Logout)    //
 	//r.POST("/users", logic.AddUser)             //
@@ -31,7 +36,8 @@ func New() *gin.Engine {
 	r.GET("/adminLogout", logic.AdminLogout)    //
 	////游客可以浏览书籍和分类
 	//r.GET("/books", logic.SearchBook)          //
-	r.GET("/books/:id", logic.GetBook) //
+	r.GET("/books/:id", logic.GetBook)                 //
+	r.GET("/book/:bookName", logic.GetBookPhotoByName) //
 	//r.GET("/categories", logic.SearchCategory) //
 	/*time1 := time.NewTicker(1 * time.Minute)
 	go func() {

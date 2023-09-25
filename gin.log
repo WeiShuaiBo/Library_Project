@@ -1,0 +1,42 @@
+[GIN-debug] [WARNING] Creating an Engine instance with the Logger and Recovery middleware already attached.
+
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /static/*filepath         --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] GET    /                         --> library/appV5/router.New.func1 (4 handlers)
+[GIN-debug] POST   /user/users/records/:bookId --> library/appV5/logic.BorrowBook (5 handlers)
+[GIN-debug] PUT    /user/users/records/:bookId --> library/appV5/logic.ReturnBook (5 handlers)
+[GIN-debug] GET    /user/users/GetPersonalInformation/ --> library/appV5/logic.GetPersonalInformation (5 handlers)
+[GIN-debug] POST   /user/users/UpdatePersonalInformation/ --> library/appV5/logic.UpdatePersonalInformation (5 handlers)
+[GIN-debug] POST   /user/users/buy/:bookId   --> library/appV5/logic.BuyBook (5 handlers)
+[GIN-debug] POST   /user/users/qrcodeLogin/:code --> library/appV5/logic.QrcodeLogin (5 handlers)
+[GIN-debug] GET    /user/users/aLiPay/:ordersId --> library/appV5/logic.ALiPay (5 handlers)
+[GIN-debug] POST   /admin/books/AddBook      --> library/appV5/logic.AddBook (5 handlers)
+[GIN-debug] GET    /admin/books/DeleteBook/:bookId --> library/appV5/logic.DeleteBook (5 handlers)
+[GIN-debug] GET    /admin/records/getRecords --> library/appV5/logic.GetRecords (5 handlers)
+[GIN-debug] GET    /admin/records/status/:id --> library/appV5/logic.GetUserRecordStatus (5 handlers)
+[GIN-debug] GET    /admin/records/GetPersonalInformation/:userId --> library/appV5/logic.GetUserInformation (5 handlers)
+[GIN-debug] GET    /admin/records/GETBookRecord/:bookId --> library/appV5/logic.GETBookRecord (5 handlers)
+[GIN-debug] GET    /html                     --> library/appV5/logic.Html (4 handlers)
+[GIN-debug] GET    /:pageNumber              --> library/appV5/logic.GetAll (4 handlers)
+[GIN-debug] GET    /qrcode                   --> library/appV5/logic.Qrcode (4 handlers)
+[GIN-debug] GET    /AutomaticLogin/:code     --> library/appV5/logic.AutomaticLogin (4 handlers)
+[GIN-debug] POST   /Captcha                  --> library/appV5/logic.Captcha (4 handlers)
+[GIN-debug] POST   /Registered/:code         --> library/appV5/logic.Registered (4 handlers)
+[GIN-debug] GET    /alipay/callback          --> library/appV5/router.New.func2 (4 handlers)
+[GIN-debug] GET    /alipay/notify            --> library/appV5/router.New.func3 (4 handlers)
+[GIN-debug] GET    /aLiPay/:ordersId         --> library/appV5/logic.ALiPay (4 handlers)
+[GIN-debug] POST   /userLogin                --> library/appV5/userClient.UserLogin (4 handlers)
+[GIN-debug] GET    /userLogout               --> library/appV5/logic.Logout (4 handlers)
+[GIN-debug] POST   /adminLogin               --> library/appV5/logic.LibrarianLogin (4 handlers)
+[GIN-debug] GET    /adminLogout              --> library/appV5/logic.AdminLogout (4 handlers)
+[GIN-debug] GET    /books/:id                --> library/appV5/logic.GetBook (4 handlers)
+[GIN-debug] GET    /book/:bookName           --> library/appV5/logic.GetBookPhotoByName (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)

@@ -13,6 +13,13 @@ type Admin struct {
 	Name string `json:"name" form:"name" binding:"required"`
 	Pwd  string `json:"pwd" form:"pwd" binding:"required"`
 }
+type Book struct {
+	BN          string `gorm:"type:varchar(20)" json:"bn"`
+	Name        string `gorm:"type:varchar(200)" json:"name"`
+	Description string `gorm:"type:varchar(15000)"`
+	Count       int    `json:"count"`
+	ImgUrl      string `json:"img_url" gorm:"varchar(200)"`
+}
 
 // LibrarianLogin godoc
 //
@@ -26,7 +33,6 @@ type Admin struct {
 //	@response		200,500	{object}	tools.HttpCode{data=Token}
 //	@Router			/adminLogin [POST]
 func LibrarianLogin(c *gin.Context) {
-	fmt.Printf("不容易——————————————————————————————终于到这里啦")
 	var admin Admin
 	//	绑定并判断
 	if c.ShouldBind(&admin) != nil {
@@ -112,16 +118,15 @@ func GetRecords(c *gin.Context) {
 	})
 }
 
-// GetUserRecordStatus godoc
-// @Summary 查看借书记录
-// @Description 根据用户ID获取相关借书记录
+// GetUserRecordStatus godox
+// @Summary 查看用户借书记录
+// @Description 根据用户ID获取用户借书信息
 // @Tags admin
 // @Accept multipart/form-data
 // @Produce json
-// @Param id path int true "用户ID"
+// @Param userId path int true "用户ID"
 // @Success 200 {object} tools.HttpCode
-// @Router /admin/records/{status}/{id} [get]
-
+// @Router /admin/records/status/{id} [get]
 func GetUserRecordStatus(c *gin.Context) {
 	statusIdStr := c.Param("id")
 	statusId, _ := strconv.ParseInt(statusIdStr, 10, 64)
@@ -149,4 +154,183 @@ func GetUserRecordStatus(c *gin.Context) {
 		Data: struct{}{},
 	})
 	return
+}
+
+// GetUserInformation godoc
+// @Summary 查看个人信息
+// @Description 根据用户ID获取用户信息
+// @Tags admin
+// @Accept multipart/form-data
+// @Produce json
+// @Param userId path int true "用户ID"
+// @Success 200 {object} tools.HttpCode
+// @Router /admin/records/GetPersonalInformation/{userId} [get]
+func GetUserInformation(c *gin.Context) {
+	statusIdStr := c.Param("userId")
+	statusId, _ := strconv.ParseInt(statusIdStr, 10, 64)
+	if statusId <= 0 {
+		c.JSON(http.StatusNotFound, tools.HttpCode{
+			Code:    tools.NotFound,
+			Message: "id获取失败",
+			Data:    struct{}{},
+		})
+		return
+	}
+	ret := model.GetUserInformation(statusId)
+	if ret.Id > 0 {
+		c.JSON(http.StatusOK, tools.HttpCode{
+			Code:    tools.OK,
+			Message: "",
+			Data:    ret,
+		})
+		return
+	}
+
+	c.JSON(http.StatusNotFound, tools.HttpCode{
+		Code: tools.NotFound,
+		Data: struct{}{},
+	})
+	return
+}
+
+// AddBook godoc
+//
+//	@Summary		增添图书
+//	@Description	会执行增添图书操作
+//	@Tags			admin
+//	@Accept			multipart/form-data
+//	@Produce		json
+//	@Param			BN	formData	string	true	"种类"
+//	@Param			Name		formData	string	true	"书名"
+//	@Param			Description		formData	string	true	"介绍"
+//	@Param			Count		formData	int	true	"数量"
+//	@Param			ImgUrl		formData	string	true	"imgUrl"
+//	@response		200,500	{object}	tools.HttpCode
+//	@Router			/admin/books/AddBook [POST]
+func AddBook(c *gin.Context) {
+	book := &Book{}
+	//	绑定并判断
+	if c.ShouldBind(&book) != nil {
+		c.JSON(http.StatusOK, tools.HttpCode{
+			Code:    tools.UserInfoErr,
+			Message: "绑定失败",
+			Data:    struct{}{},
+		})
+		return
+	}
+	ret := model.AddBook(book.BN, book.Name, book.Description, book.ImgUrl, book.Count)
+	if ret == 1 {
+		c.JSON(http.StatusOK, tools.HttpCode{
+			Code:    tools.OK,
+			Message: "查询数据库有问题",
+			Data:    struct{}{},
+		})
+		return
+	} else {
+		if ret == 2 {
+			c.JSON(http.StatusOK, tools.HttpCode{
+				Code:    tools.OK,
+				Message: "用户名已存在",
+				Data:    struct{}{},
+			})
+		}
+	}
+	c.JSON(http.StatusOK, tools.HttpCode{
+		Code:    tools.OK,
+		Message: "注册成功",
+		Data:    struct{}{},
+	})
+}
+
+// DeleteBook godoc
+// @Summary 删除图书
+// @Description 根据bookID删除图书
+// @Tags admin
+// @Accept multipart/form-data
+// @Produce json
+// @Param bookId path int true "bookID"
+// @Success 200 {object} tools.HttpCode
+//
+//	@Router			/admin/books/DeleteBook/{bookId} [get]
+func DeleteBook(c *gin.Context) {
+	statusIdStr := c.Param("bookId")
+	statusId, err := strconv.ParseInt(statusIdStr, 10, 64)
+	if err != nil {
+		fmt.Println("解析失败:", err)
+	} else {
+		fmt.Println(statusId)
+	}
+	if statusId <= 0 {
+		c.JSON(http.StatusNotFound, tools.HttpCode{
+			Code:    tools.NotFound,
+			Message: "id获取失败",
+			Data:    struct{}{},
+		})
+		return
+	}
+	ret := model.DeleteBook(statusId)
+	if ret == 1 {
+		c.JSON(http.StatusOK, tools.HttpCode{
+			Code:    tools.OK,
+			Message: "查询数据库有问题",
+			Data:    struct{}{},
+		})
+		return
+	} else {
+		if ret == 2 {
+			c.JSON(http.StatusOK, tools.HttpCode{
+				Code:    tools.OK,
+				Message: "图书不存在",
+				Data:    struct{}{},
+			})
+		}
+	}
+	c.JSON(http.StatusOK, tools.HttpCode{
+		Code:    tools.OK,
+		Message: "删除图书成功",
+		Data:    struct{}{},
+	})
+}
+
+// GETBookRecord godoc
+// @Summary 查看图书借还记录
+// @Description 根据bookID查看图书借还记录
+// @Tags admin
+// @Accept multipart/form-data
+// @Produce json
+// @Param bookId path int true "bookID"
+// @Success 200 {object} tools.HttpCode
+//
+//	@Router			/admin/records/GETBookRecord/{bookId} [get]
+func GETBookRecord(c *gin.Context) {
+	statusIdStr := c.Param("bookId")
+	statusId, err := strconv.ParseInt(statusIdStr, 10, 64)
+	if err != nil {
+		fmt.Println("解析失败:", err)
+	} else {
+		fmt.Println(statusId)
+	}
+	if statusId <= 0 {
+		c.JSON(http.StatusNotFound, tools.HttpCode{
+			Code:    tools.NotFound,
+			Message: "id获取失败",
+			Data:    struct{}{},
+		})
+		return
+	}
+	ret := model.GETBookRecord(statusId)
+	if ret.Id <= 0 {
+		c.JSON(http.StatusNotFound, tools.HttpCode{
+			Code:    tools.NotFound,
+			Message: "获取失败",
+			Data:    struct{}{},
+		})
+		return
+	}
+	c.JSON(http.StatusOK, tools.HttpCode{
+		Code:    tools.OK,
+		Message: "获取图书借还信息成功",
+		Data:    ret,
+	})
+
 }

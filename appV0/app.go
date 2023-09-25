@@ -13,7 +13,8 @@ func Start() {
 
 	model.New()
 	tools.NewToken("")
-
+	//SendEmail.SendEmail("406624873@qq.com", "thouqwhtgioue")
 	r := router.New()
 	_ = r.Run(":8080")
+
 }
